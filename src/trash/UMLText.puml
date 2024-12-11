@@ -1,0 +1,143 @@
+@startuml
+skinparam linetype ortho
+
+package needed{
+
++abstract class Human{
++Gender gender
++int age
++String name
++vision() : void
+}
+
++interface MakeToPlay{
+makeToPlay() : void
+}
+
+}
+
+package exceptions{
+
+'+class SomeoneInOrchestraIsSickException extends Exception{
+'
+'+SomeoneInOrchestraIsSickException() : String
+'
+'}
+
+exception Exception{}
+
+exception SomeoneInOrchestraIsSickException extends Exception{
+
++SomeoneInOrchestraIsSickException() : String
+
+}
+
+}
+
+package environment{
+
+package fakeEnvironment{
++class TropicalGarden{
+-double lianaLenght
+-double treeHeight
+}
+}
+
+
+package orchestra{
+
++class Musician extends needed.Human{
++InstrumentType instrType
++boolean isHealthy
++playInstrument : void
+}
+
++class orchestraAll{
++ArrayList<Musician>
++fillOrchestra() : void
++playForAll() : void
++showerSound() : void
++checkAllIsSick() : boolean
+}
+
+note left of orchestraAll::playForAll
+  Method under exception
+end note
+
++class Conductor extends Musician implements needed.MakeToPlay{
++think() : void
++makeToPlay : void
++bowWithHands() : void
+}
+
+
++class Vietan extends Musician{
++double numberOfPult
+}
+
+}
++class Wall{
++double height
++double width
++Tulip tulip
++Tulip tulipArray[height][width]
++closeVisionMargarita() : void
++raise(): void
+}
+
+class «record»Tulip{
+double numberOfPetals
+boolean isOpened
+}
+
+
+
+package heroes{
++class Margarita extends needed.Human{
++think() : void
++waveHand() : void
++smile() : void
++speak(double dynamicVolume) : void
++moveHead() : void
+}
+
+
+
++class Begemot extends needed.Human{
++transformed() : void
++debosh() : void
+}
+
+
++class Korovyev extends needed.Human{
++whisper() : void
++illustrate() : void
+}
+
+
++class Frachnik extends needed.Human{
+-String grud
+-String plechi
++closeVisionMargarita() : void
++beWhite() : void
+}
+
+}
+
+}
+
+package enums{
++enum Gender{
+ZERO
+MALE
+FEMALE
+}
+
++enum InstrumentType{
+NOINSTRUMENT
+TRUMPET
+VIOLIN
+}
+}
+
+@enduml

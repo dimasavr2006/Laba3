@@ -1,0 +1,187 @@
+@startuml
+skinparam linetype ortho
+
+package needed{
+
++abstract class Human{
+-Gender gender
+-double age
+-String name
+
++Chest chest
++RightArm rArm
++LeftArm lArm
++RightLeg rLeg
++LeftLeg lLeg
++Bottom bottom
++Head head
+
++vision() : void
++hashCode() : int
++equals() : boolean
++setGender() : void
++getGender() : Gender
++setAge() : void
++getAge() : double
++setName() : void
++getName() : String
+}
+
+package interfaces{
+
++interface MakeToPlay{
++makeToPlay() : void
+}
+
++interface Talkable{
++saySmth(String phraze) : void
+}
+}
+
+
+package parts{
+class Chest{}
+class RightArm{}
+class LeftArm{}
+class RightLeg{}
+class LeftLeg{}
+class Bottom{}
+class Head{}
+}
+
+}
+
+
+
+package exceptions{
+
+'+class SomeoneInOrchestraIsSickException extends Exception{
+'
+'+SomeoneInOrchestraIsSickException() : String
+'
+'}
+
+exception Exception{}
+
+exception SomeoneInOrchestraIsSickException extends Exception{
+
++SomeoneInOrchestraIsSickException() : String
+
+}
+
+}
+
+package environment{
+
+package fakeEnvironment{
++class TropicalGarden{
+-double lianaLenght
+-double treeHeight
+}
+}
+
+
+package orchestra{
+
++class Musician extends needed.Human{
++InstrumentType instrType
++boolean isHealthy
++playInstrument : void
+}
+
++class orchestraAll{
++ArrayList<Musician>
++fillOrchestra() : void
++playForAll() : void
++showerSound() : void
++checkAllIsSick() : boolean
+}
+
+note left of orchestraAll::playForAll
+  Method under exception
+end note
+
++class Conductor extends Musician implements needed.interfaces.MakeToPlay{
++think() : void
++makeToPlay : void
++bowWithHands() : void
+}
+
+
++class Vietan extends Musician{
++double numberOfPult
+}
+
+}
++class Wall{
++double height
++double width
++Tulip tulip
++Tulip tulipArray[height][width]
++closeVisionMargarita() : void
++raise(): void
+}
+
+class «record»Tulip{
+double numberOfPetals
+boolean isOpened
+}
+
+
+
+package heroes{
++class Margarita extends needed.Human implements needed.interfaces.Talkable{
++think() : void
++waveHand() : void
++smile() : void
++speak(double dynamicVolume) : void
++moveHead() : void
+}
+
+
+
++class Begemot extends needed.Human implements needed.interfaces.Talkable{
++transformed() : void
++debosh() : void
+}
+
+
++class Korovyev extends needed.Human implements needed.interfaces.Talkable{
++whisper() : void
++illustrate() : void
+}
+
+
++class Frachnik extends needed.Human{
++closeVisionMargarita() : void
++beWhite() : void
+}
+
+}
+
+}
+
+package enums{
++enum Gender{
+ZERO
+MALE
+FEMALE
+}
+
++enum InstrumentType{
+NOINSTRUMENT
+TRUMPET
+VIOLIN
+}
+}
+
+'СВЯЗИ КОТОРЫЕ НЕ БУКВАМИ
+Human +- RightArm
+Human +- LeftArm
+Human +- RightLeg
+Human +- LeftLeg
+Human +- Bottom
+Human +- Head
+environment.heroes.Begemot --> environment.fakeEnvironment.TropicalGarden
+
+@enduml
