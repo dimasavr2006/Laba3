@@ -1,0 +1,106 @@
+package needed.parts;
+
+import enums.PartType;
+import enums.TypeLR;
+import exceptions.BodyPartsNumberException;
+import exceptions.BodyPartsOrientationException;
+
+public class BodyPartAbstract {
+
+    private TypeLR orientation;
+    private PartType type;
+
+    // max counts of parts of body
+    int maxCountOfArmsInHuman = 2;
+    int maxCountOfLegsInHuman = 2;
+    int maxCountOfHeadHuman = 1;
+    int maxCountOfChestHuman = 1;
+    int maxCountOfBottomHuman = 1;
+
+    //checking variables for body parts
+    int checkValueArms = 0;
+    int checkValueLegs = 0;
+    int checkValueHead = 0;
+    int checkValueChest = 0;
+    int checkValueBottom = 0;
+
+    //massives for orientation of body parts
+    PartType[] armsOrientationArray = new PartType[maxCountOfArmsInHuman];
+    PartType[] legsOrientationArray = new PartType[maxCountOfLegsInHuman];
+
+
+
+    public BodyPartAbstract(TypeLR orientation, PartType typePart) throws BodyPartsNumberException {
+
+        switch (typePart) {
+            case ARM: {
+
+                partNumberChecker(typePart);
+
+                checkValueArms++;
+                break;
+            }
+            case LEG: {
+                partNumberChecker(typePart);
+                checkValueLegs++;
+                break;
+            }
+            case HEAD: {
+                partNumberChecker(typePart);
+                checkValueHead++;
+                break;
+            }
+            case CHEST: {
+                partNumberChecker(typePart);
+                checkValueChest++;
+                break;
+            }
+            case BOTTOM: {
+                partNumberChecker(typePart);
+                checkValueBottom++;
+                break;
+            }
+        }
+        // END SWITCH
+        this.orientation = orientation;
+        this.type = typePart;
+
+
+    }
+
+    public void partNumberChecker(PartType part) throws BodyPartsNumberException {
+
+        if (part == PartType.HEAD && checkValueHead == 1) {
+            throw new BodyPartsNumberException("too much parts");
+        }
+        if (part == PartType.CHEST && checkValueChest == 1) {
+            throw new BodyPartsNumberException("too much parts");
+        }
+        if (part == PartType.BOTTOM && checkValueBottom == 1) {
+            throw new BodyPartsNumberException("too much parts");
+        }
+        if (part == PartType.ARM && checkValueArms == 2){
+            throw new BodyPartsNumberException("too much parts");
+        }
+        if (part == PartType.LEG && checkValueLegs == 2) {
+            throw new BodyPartsNumberException("too much parts");
+        }
+
+
+    }
+    public void partOrientationChecker(PartType part) throws BodyPartsOrientationException{
+
+        if (part == PartType.ARM){
+            if
+        }
+
+    }
+
+    private int antiAbsMethod(int count){
+        if (count == -1){
+            count = 0;
+        }
+        return count;
+    }
+
+}

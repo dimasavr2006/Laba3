@@ -1,4 +1,4 @@
-package needed.interfaces;
+package needed;
 
 import environment.heroes.*;
 import environment.*;
@@ -12,5 +12,13 @@ import needed.interfaces.*;
 import needed.parts.*;
 import needed.utils.*;
 
-public interface Talkable {
+public class ActionMaker {
+
+    HeroesGenerator heroesGen = new HeroesGenerator();
+
+    public ActionMaker() throws WallIsAlreadyExistsException, WallHeightException {
+
+
+
+    }
 }
