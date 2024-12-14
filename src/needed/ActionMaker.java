@@ -12,11 +12,32 @@ import needed.interfaces.*;
 import needed.parts.*;
 import needed.utils.*;
 
+
 public class ActionMaker {
 
-    HeroesGenerator heroesGen = new HeroesGenerator();
+    public ActionMaker() throws WallIsAlreadyExistsException, WallHeightException, SomeoneInOrchestraIsSickException, SomeoneIsPlayingException {
 
-    public ActionMaker() throws WallIsAlreadyExistsException, WallHeightException {
+        HeroesGenerator heroesGen = new HeroesGenerator();
+
+        Margarita.visionList.add(heroesGen.frachniks[1]);
+        Margarita.visionList.add(heroesGen.frachniks[2]);
+
+        heroesGen.margarita.moveHero(Margarita.xCoord, Locator.npcConductorXCoordinate - Margarita.xCoord, Margarita.yCoord, Locator.npcConductorYCoordinate - Margarita.yCoord);
+
+        Margarita.visionList.clear();
+
+        //HIT BY MUSIC
+        Margarita.visionList.add(heroesGen.begemot);
+        Margarita.visionList.add(heroesGen.korovyev);
+
+        OrchestraAll orchestraAll = new OrchestraAll();
+
+        Margarita.visionList.add(orchestraAll.trumpetPartOfOrchestra);
+        Margarita.visionList.add(orchestraAll.violinPartOfOrchestra);
+
+        Conductor conductor = new Conductor(InstrumentType.NOINSTRUMENT);
+        Margarita.visionList.add(conductor);
+        conductor.makeStopPlaying();
 
 
 

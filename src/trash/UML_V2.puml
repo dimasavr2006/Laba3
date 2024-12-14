@@ -1,187 +1,339 @@
 @startuml
+top to bottom direction
 skinparam linetype ortho
 
-package needed{
-
-+abstract class Human{
--Gender gender
--double age
--String name
-
-+Chest chest
-+RightArm rArm
-+LeftArm lArm
-+RightLeg rLeg
-+LeftLeg lLeg
-+Bottom bottom
-+Head head
-
-+vision() : void
-+hashCode() : int
-+equals() : boolean
-+setGender() : void
-+getGender() : Gender
-+setAge() : void
-+getAge() : double
-+setName() : void
-+getName() : String
+class ActionMaker {
+  + ActionMaker():
+}
+class Arm {
+  + Arm(OrientationOfPart):
+  ~ orientation: OrientationOfPart
+  ~ typeOfBodyPart: TypeOfBodyPart
+  ~ isIn: boolean
+}
+class Begemot {
+  + Begemot():
+  ~ gender: Gender
+  ~ age: double
+  ~ name: String
+  + moveHero(double, double, double, double): void
+}
+class Bottom {
+  + Bottom():
+  ~ isIn: boolean
+  ~ typeOfBodyPart: TypeOfBodyPart
+  ~ orientation: OrientationOfPart
+}
+class Chest {
+  + Chest():
+  ~ typeOfBodyPart: TypeOfBodyPart
+  ~ orientation: OrientationOfPart
+  ~ isIn: boolean
+}
+class Conductor {
+  + Conductor(InstrumentType):
+  + makeToPlay(): void
+  + makeStopPlaying(): void
+  + moveHero(double, double, double, double): void
+}
+class Frachnik {
+  + Frachnik():
+  ~ gender: Gender
+  ~ age: double
+  ~ name: String
+  + moveHero(double, double, double, double): void
+}
+enum Gender << enumeration >> {
+  + Gender():
+  + FEMALE:
+  + ZERO:
+  + MALE:
+  + valueOf(String): Gender
+  + values(): Gender[]
+}
+class Head {
+  + Head():
+  ~ typeOfBodyPart: TypeOfBodyPart
+  ~ isIn: boolean
+  ~ orientation: OrientationOfPart
+}
+class HeroesGenerator {
+  + HeroesGenerator():
+  ~ margarita: Margarita
+  ~ frachniks: Frachnik[]
+  ~ begemot: Begemot
+  ~ korovyev: Korovyev
+}
+class Human {
+  + Human():
+  + Human(Gender, double, String):
+  ~ rArm: Arm
+  ~ bottom: Bottom
+  ~ chest: Chest
+  - gender: Gender
+  - age: double
+  ~ lLeg: Leg
+  ~ rLeg: Leg
+  ~ head: Head
+  ~ lArm: Arm
+  - earHP: double
+  - name: String
+  + setName(String): void
+  + setEarHP(double): void
+  + moveHero(double, double, double, double): void
+  + getEarHP(): double
+  + setAge(double): void
+  + setGender(Gender): void
+}
+enum InstrumentType << enumeration >> {
+  + InstrumentType():
+  + NOINSTRUMENT:
+  + TRUMPET:
+  + VIOLIN:
+  + values(): InstrumentType[]
+  + valueOf(String): InstrumentType
+}
+class Korovyev {
+  + Korovyev():
+  ~ gender: Gender
+  ~ name: String
+  ~ age: double
+  + moveHero(double, double, double, double): void
+}
+class Leg {
+  + Leg(OrientationOfPart):
+  ~ isIn: boolean
+  ~ orientation: OrientationOfPart
+  ~ typeOfBodyPart: TypeOfBodyPart
+}
+class Locator {
+  + Locator():
+  + orchestraAnsambleOtherEndXCoordinate: double
+  + npcVietanYCoordinate: double
+  + heroKorovyevYCoordinate: double
+  + heroBegemotYCoordinate: double
+  + npcConductorXCoordinate: double
+  + heroKorovyevXCoordinate: double
+  + wallYCoordinate: double
+  ~ random: Random
+  + heroMargaritaYCoordinate: double
+  + wallXCoordinate: double
+  + roomYCoordinate: double
+  + orchestraAnsambleOtherStartXCoordinate: double
+  + orchestraAnsambleEndYCoordinate: double
+  + fakeEnvironmentYStartCoordinate: double
+  + orchestraAnsambleViolinEndYCoordinate: double
+  + orchestraAnsambleOtherStartYCoordinate: double
+  ~ utuls: Utils
+  + npcVietanXCoordinate: double
+  + npcConductorYCoordinate: double
+  + orchestraAnsambleStartYCoordinate: double
+  + orchestraAnsambleViolinEndXCoordinate: double
+  + npcFrachnikYCoordinate: double
+  + orchestraAnsambleEndXCoordinate: double
+  + orchestraAnsambleOtherEndYCoordinate: double
+  + fakeEnvironmentYEndCoordinate: double
+  + roomXCoordinate: double
+  + fakeEnvironmentXEndCoordinate: double
+  + orchestraAnsambleStartXCoordinate: double
+  + fakeEnvironmentXStartCoordinate: double
+  + orchestraAnsambleViolinStartXCoordinate: double
+  + heroMargaritaXCoordinate: double
+  + orchestraAnsambleViolinStartYCoordinate: double
+  + heroBegemotXCoordinate: double
+  + npcFrachnikXCoordinate: double
+  + getHeroMargaritaXCoordinate(): double
+  + getHeroMargaritaYCoordinate(): double
+  - mainGeneratorOfPlace(): void
+}
+class Main {
+  + Main():
+  + main(String[]): void
+}
+interface MakeToPlay << interface >> {
+  + makeToPlay(): void
+}
+class Margarita {
+  + Margarita():
+  ~ gender: Gender
+  ~ age: double
+  ~ name: String
+  + xCoord: double
+  + yCoord: double
+  ~ utils: Utils
+  ~ height: double
+  + visionList: ArrayList<Object>
+  + wall: Wall
+  + speak(double): void
+  + moveHero(double, double, double, double): void
+}
+class Musician {
+  + Musician(InstrumentType):
+  ~ random: Random
+  ~ isHealthy: boolean
+  ~ instrumentType: InstrumentType
+  ~ isPlaying: boolean
+  + moveHero(double, double, double, double): void
+  + healthyChecker(Musician): void
+}
+class OrchestraAll {
+  + OrchestraAll():
+  + trumpetPartOfOrchestra: TrumpetPartOfOrchestra
+  + violinPartOfOrchestra: ViolinPartOfOrchestra
+  + getViolinPartOfOrchestra(): ViolinPartOfOrchestra
+  + getTrumpetPartOfOrchestra(): TrumpetPartOfOrchestra
+}
+enum OrientationOfPart << enumeration >> {
+  + OrientationOfPart():
+  + ZERO:
+  + LEFT:
+  + RIGHT:
+  + values(): OrientationOfPart[]
+  + valueOf(String): OrientationOfPart
+}
+class PairCoordinates {
+  + PairCoordinates(double, double):
+  ~ x: double
+  ~ y: double
+  + getY(): double
+  + getX(): double
+}
+class SomeoneInOrchestraIsSickException {
+  + SomeoneInOrchestraIsSickException(String):
+}
+class SomeoneIsPlayingException {
+  + SomeoneIsPlayingException(String):
+}
+interface Talkable << interface >>
+class TropicalGarden {
+  + TropicalGarden():
+}
+class TrumpetPartOfOrchestra {
+  + TrumpetPartOfOrchestra():
+  ~ lenght: double
+  ~ numberOfMusiciansInColumn: int
+  ~ height: double
+  ~ numberOfMusiciansInRow: int
+  ~ trumpetsAll: Musician[][]
+}
+entity Tulip << record >> {
+  + Tulip(double, boolean):
+  - numberOfPetals: double
+  - isOpened: boolean
+  + numberOfPetals(): double
+  + isOpened(): boolean
+}
+enum TypeOfBodyPart << enumeration >> {
+  + TypeOfBodyPart():
+  + ARM:
+  + BOTTOM:
+  + HEAD:
+  + LEG:
+  + CHEST:
+  + values(): TypeOfBodyPart[]
+  + valueOf(String): TypeOfBodyPart
+}
+class Utils {
+  + Utils():
+  + wallExistenceChecker(Wall): void
+  + pairCoordinatesGenerator(double, double): PairCoordinates
+  + wallGrowHeightChecker(double, double): void
+}
+class ViolinPartOfOrchestra {
+  + ViolinPartOfOrchestra():
+  ~ lenght: double
+  ~ violinsAll: Musician[][]
+  ~ numberOfMusiciansInColumn: int
+  ~ height: double
+  ~ numberOfMusiciansInRow: int
+}
+class Wall {
+  + Wall():
+  ~ random: Random
+  ~ height: int
+  + isExists: boolean
+  ~ width: int
+  ~ tulipArray: Tulip[][]
+  + tulipGrowerOnWall(): void
+  + getHeight(): int
+}
+class WallHeightException {
+  + WallHeightException(String):
+}
+class WallIsAlreadyExistsException {
+  + WallIsAlreadyExistsException(String):
 }
 
-package interfaces{
-
-+interface MakeToPlay{
-+makeToPlay() : void
-}
-
-+interface Talkable{
-+saySmth(String phraze) : void
-}
-}
-
-
-package parts{
-class Chest{}
-class RightArm{}
-class LeftArm{}
-class RightLeg{}
-class LeftLeg{}
-class Bottom{}
-class Head{}
-}
-
-}
-
-
-
-package exceptions{
-
-'+class SomeoneInOrchestraIsSickException extends Exception{
-'
-'+SomeoneInOrchestraIsSickException() : String
-'
-'}
-
-exception Exception{}
-
-exception SomeoneInOrchestraIsSickException extends Exception{
-
-+SomeoneInOrchestraIsSickException() : String
-
-}
-
-}
-
-package environment{
-
-package fakeEnvironment{
-+class TropicalGarden{
--double lianaLenght
--double treeHeight
-}
-}
-
-
-package orchestra{
-
-+class Musician extends needed.Human{
-+InstrumentType instrType
-+boolean isHealthy
-+playInstrument : void
-}
-
-+class orchestraAll{
-+ArrayList<Musician>
-+fillOrchestra() : void
-+playForAll() : void
-+showerSound() : void
-+checkAllIsSick() : boolean
-}
-
-note left of orchestraAll::playForAll
-  Method under exception
-end note
-
-+class Conductor extends Musician implements needed.interfaces.MakeToPlay{
-+think() : void
-+makeToPlay : void
-+bowWithHands() : void
-}
-
-
-+class Vietan extends Musician{
-+double numberOfPult
-}
-
-}
-+class Wall{
-+double height
-+double width
-+Tulip tulip
-+Tulip tulipArray[height][width]
-+closeVisionMargarita() : void
-+raise(): void
-}
-
-class «record»Tulip{
-double numberOfPetals
-boolean isOpened
-}
-
-
-
-package heroes{
-+class Margarita extends needed.Human implements needed.interfaces.Talkable{
-+think() : void
-+waveHand() : void
-+smile() : void
-+speak(double dynamicVolume) : void
-+moveHead() : void
-}
-
-
-
-+class Begemot extends needed.Human implements needed.interfaces.Talkable{
-+transformed() : void
-+debosh() : void
-}
-
-
-+class Korovyev extends needed.Human implements needed.interfaces.Talkable{
-+whisper() : void
-+illustrate() : void
-}
-
-
-+class Frachnik extends needed.Human{
-+closeVisionMargarita() : void
-+beWhite() : void
-}
-
-}
-
-}
-
-package enums{
-+enum Gender{
-ZERO
-MALE
-FEMALE
-}
-
-+enum InstrumentType{
-NOINSTRUMENT
-TRUMPET
-VIOLIN
-}
-}
-
-'СВЯЗИ КОТОРЫЕ НЕ БУКВАМИ
-Human +- RightArm
-Human +- LeftArm
-Human +- RightLeg
-Human +- LeftLeg
-Human +- Bottom
-Human +- Head
-environment.heroes.Begemot --> environment.fakeEnvironment.TropicalGarden
-
+ActionMaker                        -[#595959,dashed]->  Conductor                         : "«create»"
+ActionMaker                        -[#595959,dashed]->  HeroesGenerator                   : "«create»"
+ActionMaker                        -[#595959,dashed]->  OrchestraAll                      : "«create»"
+Arm                                +-[#820000,plain]-  Human
+Arm                               "1" *-[#595959,plain]-> "orientation\n1" OrientationOfPart
+Arm                               "1" *-[#595959,plain]-> "typeOfBodyPart\n1" TypeOfBodyPart
+Begemot                           "1" *-[#595959,plain]-> "gender\n1" Gender
+Begemot                            -[#000082,plain]-^  Human
+Bottom                             +-[#820000,plain]-  Human
+Bottom                            "1" *-[#595959,plain]-> "orientation\n1" OrientationOfPart
+Bottom                            "1" *-[#595959,plain]-> "typeOfBodyPart\n1" TypeOfBodyPart
+Chest                              +-[#820000,plain]-  Human
+Chest                             "1" *-[#595959,plain]-> "orientation\n1" OrientationOfPart
+Chest                             "1" *-[#595959,plain]-> "typeOfBodyPart\n1" TypeOfBodyPart
+Conductor                          -[#008200,dashed]-^  MakeToPlay
+Conductor                          -[#000082,plain]-^  Musician
+Conductor                          -[#595959,dashed]->  OrchestraAll                      : "«create»"
+Conductor                          -[#595959,dashed]->  SomeoneIsPlayingException         : "«create»"
+Frachnik                          "1" *-[#595959,plain]-> "gender\n1" Gender
+Frachnik                           -[#000082,plain]-^  Human
+Head                               +-[#820000,plain]-  Human
+Head                              "1" *-[#595959,plain]-> "orientation\n1" OrientationOfPart
+Head                              "1" *-[#595959,plain]-> "typeOfBodyPart\n1" TypeOfBodyPart
+HeroesGenerator                   "1" *-[#595959,plain]-> "begemot\n1" Begemot
+HeroesGenerator                    -[#595959,dashed]->  Begemot                           : "«create»"
+HeroesGenerator                   "1" *-[#595959,plain]-> "frachniks\n*" Frachnik
+HeroesGenerator                    -[#595959,dashed]->  Frachnik                          : "«create»"
+HeroesGenerator                    -[#595959,dashed]->  Korovyev                          : "«create»"
+HeroesGenerator                   "1" *-[#595959,plain]-> "korovyev\n1" Korovyev
+HeroesGenerator                    -[#595959,dashed]->  Margarita                         : "«create»"
+HeroesGenerator                   "1" *-[#595959,plain]-> "margarita\n1" Margarita
+Human                             "1" *-[#595959,plain]-> "rArm\n1" Arm
+Human                              -[#595959,dashed]->  Arm                               : "«create»"
+Human                              -[#595959,dashed]->  Bottom                            : "«create»"
+Human                             "1" *-[#595959,plain]-> "bottom\n1" Bottom
+Human                             "1" *-[#595959,plain]-> "chest\n1" Chest
+Human                              -[#595959,dashed]->  Chest                             : "«create»"
+Human                             "1" *-[#595959,plain]-> "gender\n1" Gender
+Human                              -[#595959,dashed]->  Head                              : "«create»"
+Human                             "1" *-[#595959,plain]-> "head\n1" Head
+Human                             "1" *-[#595959,plain]-> "rLeg\n1" Leg
+Human                              -[#595959,dashed]->  Leg                               : "«create»"
+Korovyev                          "1" *-[#595959,plain]-> "gender\n1" Gender
+Korovyev                           -[#000082,plain]-^  Human
+Leg                                +-[#820000,plain]-  Human
+Leg                               "1" *-[#595959,plain]-> "orientation\n1" OrientationOfPart
+Leg                               "1" *-[#595959,plain]-> "typeOfBodyPart\n1" TypeOfBodyPart
+Locator                            -[#595959,dashed]->  Utils                             : "«create»"
+Locator                           "1" *-[#595959,plain]-> "utuls\n1" Utils
+Main                               -[#595959,dashed]->  Locator                           : "«create»"
+Margarita                         "1" *-[#595959,plain]-> "gender\n1" Gender
+Margarita                          -[#000082,plain]-^  Human
+Margarita                          -[#595959,dashed]->  Utils                             : "«create»"
+Margarita                         "1" *-[#595959,plain]-> "utils\n1" Utils
+Margarita                         "1" *-[#595959,plain]-> "wall\n1" Wall
+Margarita                          -[#595959,dashed]->  Wall                              : "«create»"
+Musician                           -[#000082,plain]-^  Human
+Musician                          "1" *-[#595959,plain]-> "instrumentType\n1" InstrumentType
+Musician                           -[#595959,dashed]->  SomeoneInOrchestraIsSickException : "«create»"
+OrchestraAll                      "1" *-[#595959,plain]-> "trumpetPartOfOrchestra\n1" TrumpetPartOfOrchestra
+OrchestraAll                       -[#595959,dashed]->  TrumpetPartOfOrchestra            : "«create»"
+OrchestraAll                       -[#595959,dashed]->  ViolinPartOfOrchestra             : "«create»"
+OrchestraAll                      "1" *-[#595959,plain]-> "violinPartOfOrchestra\n1" ViolinPartOfOrchestra
+TrumpetPartOfOrchestra             -[#595959,dashed]->  Musician                          : "«create»"
+TrumpetPartOfOrchestra            "1" *-[#595959,plain]-> "trumpetsAll\n*" Musician
+Utils                              -[#595959,dashed]->  PairCoordinates                   : "«create»"
+Utils                              -[#595959,dashed]->  WallHeightException               : "«create»"
+Utils                              -[#595959,dashed]->  WallIsAlreadyExistsException      : "«create»"
+ViolinPartOfOrchestra              -[#595959,dashed]->  Musician                          : "«create»"
+ViolinPartOfOrchestra             "1" *-[#595959,plain]-> "violinsAll\n*" Musician
+Wall                               -[#595959,dashed]->  Tulip                             : "«create»"
+Wall                              "1" *-[#595959,plain]-> "tulipArray\n*" Tulip
 @enduml

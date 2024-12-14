@@ -7,6 +7,7 @@ public abstract class Human {
     private Gender gender;
     private double age;
     private String name;
+    private double earHP = 100;
 
     Arm rArm = new Arm(OrientationOfPart.RIGHT);
     Arm lArm = new Arm(OrientationOfPart.LEFT);
@@ -28,6 +29,14 @@ public abstract class Human {
         this.name = name;
     }
 
+    public void setEarHP(double earHP) {
+        this.earHP = earHP;
+    }
+
+    public double getEarHP() {
+        return earHP;
+    }
+
     public Human(Gender gender, double age, String name) {
         this.gender = gender;
         this.age = age;
@@ -38,6 +47,8 @@ public abstract class Human {
         this.age = 0;
         this.name = "Human";
     }
+
+
 
 
     class Leg{

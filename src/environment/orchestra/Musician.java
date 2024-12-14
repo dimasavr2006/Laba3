@@ -20,10 +20,27 @@ public class Musician extends Human{
 
     InstrumentType instrumentType;
     boolean isPlaying = false;
+    boolean isHealthy;
 
     public Musician(InstrumentType instrumentType){
         super();
         this.instrumentType = instrumentType;
+
+        if (Math.random() <= 0.011){
+            this.isHealthy = false;
+        }
+        else{
+            this.isHealthy = true;
+        }
+
+    }
+
+    public void healthyChecker(Musician musician) throws SomeoneInOrchestraIsSickException {
+
+        if (musician.isHealthy == false){
+            throw new SomeoneInOrchestraIsSickException("Кто-то в оркестре болен!");
+        }
+
     }
 
     @Override

@@ -1,14 +1,15 @@
 package environment.orchestra;
 
 import enums.*;
+import exceptions.SomeoneInOrchestraIsSickException;
 import location.*;
 
 public class OrchestraAll {
 
-    ViolinPartOfOrchestra violinPartOfOrchestra;
-    TrumpetPartOfOrchestra trumpetPartOfOrchestra;
+    public ViolinPartOfOrchestra violinPartOfOrchestra;
+    public TrumpetPartOfOrchestra trumpetPartOfOrchestra;
 
-    public OrchestraAll() {
+    public OrchestraAll() throws SomeoneInOrchestraIsSickException {
 
         this.violinPartOfOrchestra = new ViolinPartOfOrchestra();
         this.trumpetPartOfOrchestra = new TrumpetPartOfOrchestra();
@@ -33,7 +34,7 @@ class ViolinPartOfOrchestra{
 
     Musician[][] violinsAll;
 
-    public ViolinPartOfOrchestra() {
+    public ViolinPartOfOrchestra() throws SomeoneInOrchestraIsSickException {
 
         this.lenght = Math.abs(Locator.orchestraAnsambleViolinStartXCoordinate - Locator.orchestraAnsambleViolinEndXCoordinate);
         this.height = Math.abs(Locator.orchestraAnsambleViolinStartYCoordinate - Locator.orchestraAnsambleViolinEndYCoordinate);
@@ -47,6 +48,8 @@ class ViolinPartOfOrchestra{
             for (int j = 0; j < numberOfMusiciansInColumn; j++) {
                 Musician musician = new Musician(InstrumentType.VIOLIN);
                 violinsAll[i][j] = musician;
+
+                musician.healthyChecker(musician);
 
                 if (i == 1 && j == 1){
                     violinsAll[i][j].setName("Виетан");
@@ -66,7 +69,7 @@ class TrumpetPartOfOrchestra{
 
     Musician[][] trumpetsAll;
 
-    public TrumpetPartOfOrchestra() {
+    public TrumpetPartOfOrchestra() throws SomeoneInOrchestraIsSickException {
 
         this.lenght = Math.abs(Locator.orchestraAnsambleOtherStartXCoordinate - Locator.orchestraAnsambleOtherEndXCoordinate);
         this.height = Math.abs(Locator.orchestraAnsambleOtherStartYCoordinate - Locator.orchestraAnsambleOtherEndYCoordinate);
@@ -80,6 +83,8 @@ class TrumpetPartOfOrchestra{
             for (int j = 0; j < numberOfMusiciansInColumn; j++) {
                 Musician musician = new Musician(InstrumentType.TRUMPET);
                 trumpetsAll[i][j] = musician;
+
+                musician.healthyChecker(musician);
             }
         }
     }

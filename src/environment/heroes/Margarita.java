@@ -21,6 +21,9 @@ public class Margarita extends Human {
     double age = 33;
     String name = "Маргарита";
 
+    public static double xCoord;
+    public static double yCoord;
+
     double height = 165;
 
     public Margarita() throws WallHeightException, WallIsAlreadyExistsException {
@@ -46,12 +49,29 @@ public class Margarita extends Human {
     Utils utils = new Utils();
 
 
+    public static ArrayList<Object> visionList = new ArrayList<>();
 
-    static ArrayList<Object> visionList = new ArrayList<>();
+    public void speak(double volume){
+
+        System.out.println("гол");
+        if (volume > 100){
+
+            for (int i = 0; i < visionList.size(); i++) {
+
+                // ????? 
+
+            }
+
+        }
+
+    }
 
     @Override
-    public void moveHero(double startXCoord, double moveOnXAxis, double startYAxis, double moveOnYAxis) {
+    public void moveHero(double startXCoord, double moveOnXAxis, double startYCoord, double moveOnYAxis) {
         startXCoord+=moveOnXAxis;
-        startYAxis+=moveOnYAxis;
+        startYCoord+=moveOnYAxis;
+
+        startXCoord = xCoord;
+        startYCoord = yCoord;
     }
 }

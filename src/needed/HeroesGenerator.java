@@ -14,18 +14,22 @@ import needed.utils.*;
 
 public class HeroesGenerator {
 
+    Margarita margarita;
+    Begemot begemot;
+    Frachnik[] frachniks;
+    Korovyev korovyev;
+
     public HeroesGenerator() throws WallIsAlreadyExistsException, WallHeightException {
 
 
-        Margarita margarita = new Margarita();
-        Begemot begemot = new Begemot();
+        this.margarita = new Margarita();
+        this.begemot = new Begemot();
 
-        Frachnik[] frachniks = new Frachnik[2];
-        frachniks[0] = new Frachnik();
-        frachniks[1] = new Frachnik();
+        this.frachniks = new Frachnik[2];
+        this.frachniks[0] = new Frachnik();
+        this.frachniks[1] = new Frachnik();
 
-        Korovyev korovyev = new Korovyev();
-
+        this.korovyev = new Korovyev();
 
     }
 }

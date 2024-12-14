@@ -14,6 +14,6 @@ import needed.utils.*;
 
 public interface MakeToPlay {
 
-    public void makeToPlay() throws SomeoneIsPlayingException;
+    public void makeToPlay() throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException;
 
 }
