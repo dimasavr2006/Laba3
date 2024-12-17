@@ -9,11 +9,10 @@ import exceptions.*;
 import location.*;
 import needed.*;
 import needed.interfaces.*;
-import needed.parts.*;
 import needed.utils.*;
 
 public interface MakeToPlay {
 
-    public void makeToPlay() throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException;
+    public void makeToPlay(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException, NotMovingArmsException;
 
 }

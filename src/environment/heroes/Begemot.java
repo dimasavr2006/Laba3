@@ -9,7 +9,6 @@ import exceptions.*;
 import location.*;
 import needed.*;
 import needed.interfaces.*;
-import needed.parts.*;
 import needed.utils.*;
 
 public class Begemot extends Human {
@@ -23,6 +22,12 @@ public class Begemot extends Human {
         this.gender = gender;
         this.age = age;
         this.name = name;
+    }
+
+    public void fakeEnvironmentCreator(){
+
+        TropicalGarden tropicalGarden = new TropicalGarden();
+
     }
 
     @Override

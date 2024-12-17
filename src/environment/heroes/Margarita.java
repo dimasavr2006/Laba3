@@ -9,11 +9,11 @@ import exceptions.*;
 import location.*;
 import needed.*;
 import needed.interfaces.*;
-import needed.parts.*;
 import needed.utils.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class Margarita extends Human {
 
@@ -48,23 +48,13 @@ public class Margarita extends Human {
 
     Utils utils = new Utils();
 
+    Random random = new Random();
 
     public static ArrayList<Object> visionList = new ArrayList<>();
 
-    public void speak(double volume){
+    public static ArrayList<Human> visionListHuman = new ArrayList<>();
 
-        System.out.println("гол");
-        if (volume > 100){
 
-            for (int i = 0; i < visionList.size(); i++) {
-
-                // ????? 
-
-            }
-
-        }
-
-    }
 
     @Override
     public void moveHero(double startXCoord, double moveOnXAxis, double startYCoord, double moveOnYAxis) {

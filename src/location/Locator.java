@@ -13,6 +13,12 @@ public class Locator {
     Utils utuls = new Utils();
 
 
+    public Locator() {
+
+        mainGeneratorOfPlace();
+
+    }
+
     //VARIABLES OF PLACES
     public static double roomXCoordinate;
     public static double roomYCoordinate;

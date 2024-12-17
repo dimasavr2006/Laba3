@@ -1,6 +1,13 @@
 package needed;
 
+import environment.heroes.*;
+import environment.orchestra.*;
 import enums.*;
+import exceptions.*;
+import needed.utils.*;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Human {
 
@@ -9,13 +16,16 @@ public abstract class Human {
     private String name;
     private double earHP = 100;
 
-    Arm rArm = new Arm(OrientationOfPart.RIGHT);
-    Arm lArm = new Arm(OrientationOfPart.LEFT);
-    Leg rLeg = new Leg(OrientationOfPart.RIGHT);
-    Leg lLeg = new Leg(OrientationOfPart.LEFT);
-    Chest chest = new Chest();
-    Head head = new Head();
-    Bottom bottom = new Bottom();
+    public Arm rArm;
+    public Arm lArm;
+    public Leg rLeg;
+    public Leg lLeg;
+    public Chest chest;
+    public Head head;
+    public Bottom bottom;
+
+    Random random = new Random();
+    Utils utils = new Utils();
 
     public abstract void moveHero (double startXCoord, double moveOnXAxis, double startYAxis , double moveOnYAxis);
 
@@ -46,10 +56,179 @@ public abstract class Human {
         this.gender = Gender.ZERO;
         this.age = 0;
         this.name = "Human";
+        this.earHP = 100;
+
+        this.rArm = new Arm(OrientationOfPart.RIGHT);
+        this.lArm = new Arm(OrientationOfPart.LEFT);
+        this.rLeg = new Leg(OrientationOfPart.RIGHT);
+        this.lLeg = new Leg(OrientationOfPart.LEFT);
+        this.chest = new Chest();
+        this.head = new Head();
+        this.bottom = new Bottom();
+
     }
 
+    public void turnBody(Human human, double degrees) {
+
+        human.bottom.turnAngleOfBody += degrees;
+
+        int turner = (int) (Math.abs(human.bottom.turnAngleOfBody) / 360);
+
+        double setter = 0;
+
+        for (int i = 0; i < turner; i++) {
+            if (human.bottom.turnAngleOfBody < 0) {
+                human.bottom.turnAngleOfBody += 360;
+                setter = human.bottom.turnAngleOfBody;
+
+            } else if (human.bottom.turnAngleOfBody >= 360) {
+                human.bottom.turnAngleOfBody -= 360;
+                setter = human.bottom.turnAngleOfBody;
+            }
+        }
+
+        human.bottom.setTurnAngleOfBody(setter);
+
+    }
+
+    public void slantBody(Human human, double degrees){
+
+        double startDegree = human.bottom.getSlantAngleOfBody() + degrees;
+
+        int turner = (int) (Math.abs(startDegree) / 360);
+
+        for (int i = 0; i < turner; i++) {
+            if (startDegree < 0){
+                startDegree += 360;
+            }
+            else if (startDegree >= 360) {
+                startDegree -= 360;
+            }
+        }
+        human.bottom.setSlantAngleOfBody(startDegree);
+
+    }
+    public void moveFullArmForDegree(Human human,OrientationOfPart armOrientation, double degrees) throws WrongArmPositionException {
+
+        if (human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0 || human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0) {
+
+            throw new WrongArmPositionException("Рука стоит неестественно");
+
+        }
+        double startDegreeR = human.rArm.getAngleOnBody();
+        double startDegreeL = human.rArm.getAngleOnBody();
+
+        if (armOrientation == OrientationOfPart.RIGHT) {
+            human.rArm.setAngleOnBody(startDegreeR + degrees);
+        }
+        else if (armOrientation == OrientationOfPart.LEFT) {
+            human.lArm.setAngleOnBody(startDegreeL + degrees);
+        }
+
+        if (human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0 || human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0) {
+
+            throw new WrongArmPositionException("Рука стоит неестественно");
+
+        }
+
+    }
+
+    public void speak(double volume, String speakingText) throws BecomeDeafException {
+
+        if (volume > 100){
+
+            for (int i = 0; i < Margarita.visionListHuman.size(); i++) {
+
+                Margarita.visionListHuman.get(i).setEarHP(getEarHP()-(volume * 0.3) * random.nextDouble(0.1, 0.3));
+                utils.earHPChecker(Margarita.visionListHuman.get(i));
+
+            }
+
+        }
+        System.out.println(speakingText);
+
+    }
+
+    public void changeSmileCondition(Human human){
+
+        if (human.head.getSmiling() == false){
+            human.head.setSmiling(true);
+        }
+        else if (human.head.getSmiling() == true){
+            human.head.setSmiling(false);
+        }
+
+    }
+
+    public void handOnArmSlanter (Human human, OrientationOfPart orientation, double degrees){
+
+        int turner = 0;
+        double start = 0;
+        double middle = 0;
+
+        if (orientation == OrientationOfPart.RIGHT) {
+            start = human.rArm.getHandAngleOnArm();
+            middle = start + degrees;
+            turner = (int) (Math.abs(middle) / 360);
+        }
+        else if (orientation == OrientationOfPart.LEFT) {
+            start = human.lArm.getHandAngleOnArm();
+            middle = start + degrees;
+            turner = (int) (Math.abs(middle) / 360);
+        }
+
+        for (int i = 0; i < turner; i++){
+            if (middle < 0){
+                middle += 360;
+            }
+            else if (middle >= 360){
+                middle -= 360;
+            }
+        }
+
+        if (orientation == OrientationOfPart.RIGHT) {
+            human.rArm.setHandAngleOnArm(middle);
+            for (Object object : human.rArm.inHand) {
+                if (object instanceof Conductor.Stick){
+                    ((Conductor.Stick) object).setAngle(middle);
+                }
+            }
+        }
+        else if (orientation == OrientationOfPart.LEFT) {
+            human.lArm.setHandAngleOnArm(middle);
+            for (Object object : human.lArm.inHand) {
+                if (object instanceof Conductor.Stick){
+                    ((Conductor.Stick) object).setAngle(middle);
+                }
+            }
+        }
 
 
+
+    }
+
+    public void turningHead(Human human, double degrees) throws WrongHeadAngleException {
+
+        double start = human.head.getTurningAngle();
+        double middle = start + degrees;
+        if (middle >= 360 || middle < 0){
+
+            throw new WrongHeadAngleException("Голова поворачивается неестественно");
+
+        }
+        human.head.setTurningAngle(middle);
+
+    }
+
+    public void noddingHead(Human human, double degrees) throws WrongHeadNodAngleException {
+
+        double start = human.head.getTurningAngle();
+        double middle = start + degrees;
+        if (middle > 90 || middle < -90){
+            throw new WrongHeadNodAngleException("Наклон головы неестственнен");
+        }
+
+    }
 
     class Leg{
         boolean isIn = true;
@@ -59,26 +238,107 @@ public abstract class Human {
             this.orientation = orientation;
         }
     }
-    class Arm{
+    public class Arm{
         boolean isIn = true;
         OrientationOfPart orientation;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.ARM;
+
+        public double coordX;
+        public double coordY;
+
+        public double angleOnBody;
+
+        public double handAngleOnArm;
+
+        public ArrayList<Object> inHand = new ArrayList<Object>();
+
         public Arm(OrientationOfPart orientation) {
             this.orientation = orientation;
             this.typeOfBodyPart = TypeOfBodyPart.ARM;
             this.isIn = true;
+
+            this.coordX = 0;
+            this.coordY = 0;
+
+            this.angleOnBody = 0;
+            this.handAngleOnArm = 0;
+
+            if (orientation == OrientationOfPart.LEFT) {
+                coordX = -1;
+            }
+            else if (orientation == OrientationOfPart.RIGHT) {
+                coordX = 1;
+            }
+
+        }
+
+        public double getCoordX() {
+            return coordX;
+        }
+
+        public void setCoordX(double coordX) {
+            this.coordX = coordX;
+        }
+        public double getCoordY() {
+            return coordY;
+        }
+        public void setCoordY(double coordY) {
+            this.coordY = coordY;
+        }
+        public double getAngleOnBody() {
+            return angleOnBody;
+        }
+        public void setAngleOnBody(double angleOnBody) {
+            this.angleOnBody = angleOnBody;
+        }
+
+        public double getHandAngleOnArm() {
+            return handAngleOnArm;
+        }
+        public void setHandAngleOnArm(double handAngleOnArm) {
+            this.handAngleOnArm = handAngleOnArm;
         }
     }
-    class Head{
+    public class Head{
         boolean isIn = true;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.HEAD;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
+        boolean isSmiling = false;
+        boolean isWhite;
+        double turningAngle;
+        double nodAngle;
         public Head(){
             this.typeOfBodyPart = TypeOfBodyPart.HEAD;
             this.isIn = true;
+            this.isSmiling = false;
+            this.isWhite = false;
+            this.turningAngle = 0;
+            this.nodAngle = 0;
+        }
+
+        public void setSmiling(boolean smiling) {
+            isSmiling = smiling;
+        }
+        public boolean getSmiling() {
+            return isSmiling;
+        }
+
+        public void setTurningAngle(double turningAngle) {
+            this.turningAngle = turningAngle;
+        }
+        public double getTurningAngle() {
+            return turningAngle;
+        }
+
+        public void setNodAngle(double nodAngle) {
+            this.nodAngle = nodAngle;
+        }
+
+        public double getNodAngle() {
+            return nodAngle;
         }
     }
-    class Chest{
+    public class Chest{
         boolean isIn = true;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.CHEST;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
@@ -87,15 +347,42 @@ public abstract class Human {
             this.isIn = true;
         }
     }
-    class Bottom{
+    public class Bottom{
         boolean isIn = true;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.BOTTOM;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
+        double turnAngleOfBody;
+        double slantAngleOfBody;
         public Bottom(){
             this.typeOfBodyPart = TypeOfBodyPart.BOTTOM;
             this.isIn = true;
+            this.turnAngleOfBody = 0;
+            this.slantAngleOfBody = 0;
+        }
+
+        public double getSlantAngleOfBody() {
+            return slantAngleOfBody;
+        }
+
+        public void setSlantAngleOfBody(double slantAngleOfBody) {
+            this.slantAngleOfBody = slantAngleOfBody;
+        }
+
+        public void setIn(boolean in) {
+            isIn = in;
+        }
+        public boolean isIn() {
+            return isIn;
+        }
+
+        public void setTurnAngleOfBody(double turnAngleOfBody) {
+            this.turnAngleOfBody = turnAngleOfBody;
+        }
+        public double getTurnAngleOfBody() {
+            return turnAngleOfBody;
         }
     }
+
 
 
 

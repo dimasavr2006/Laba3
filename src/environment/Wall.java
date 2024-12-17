@@ -9,18 +9,17 @@ import exceptions.*;
 import location.*;
 import needed.*;
 import needed.interfaces.*;
-import needed.parts.*;
 import needed.utils.*;
 
 import java.util.Random;
 
-public class Wall extends Object{
+public class Wall{
 
     public boolean isExists;
 
     Random random = new Random();
 
-    int height = random.nextInt(150, 180);
+    int height = random.nextInt(160, 180);
     int width = random.nextInt(80, 150);
 
     Tulip[][] tulipArray = new Tulip[width][height];

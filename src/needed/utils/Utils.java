@@ -12,7 +12,7 @@ import exceptions.*;
 import location.*;
 import needed.*;
 import needed.interfaces.*;
-import needed.parts.*;
+
 import needed.utils.*;
 
 public class Utils {
@@ -37,5 +37,14 @@ public class Utils {
 
     }
 
+    public void earHPChecker(Human human) throws BecomeDeafException {
+
+        if (human.getEarHP() <= 0){
+
+            throw new BecomeDeafException("Было слишком громко, кто-то оглох");
+
+        }
+
+    }
 
 }

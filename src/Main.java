@@ -7,12 +7,11 @@ import exceptions.*;
 import location.*;
 import needed.*;
 import needed.interfaces.*;
-import needed.parts.*;
 import needed.utils.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WrongArmPositionException, WrongHeadNodAngleException, WallIsAlreadyExistsException, SomeoneInOrchestraIsSickException, BecomeDeafException, SomeoneIsPlayingException, NotMovingArmsException, WallHeightException, WrongHeadAngleException {
         Locator locator = new Locator();
-
+        ActionMaker actionMaker = new ActionMaker();
     }
 }
