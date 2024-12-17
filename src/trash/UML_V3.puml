@@ -1,11 +1,12 @@
 @startuml
 
+top to bottom direction
 skinparam linetype ortho
 
-class ActionMaker {
+class needed.ActionMaker {
   + ActionMaker(): 
 }
-class Arm {
+class needed.Arm {
   + Arm(OrientationOfPart): 
   + inHand: ArrayList<Object>
   ~ isIn: boolean
@@ -24,10 +25,10 @@ class Arm {
   + getAngleOnBody(): double
   + setCoordY(double): void
 }
-class BecomeDeafException {
+class exceptions.BecomeDeafException {
   + BecomeDeafException(String): 
 }
-class Begemot {
+class environment.heroes.Begemot {
   + Begemot(): 
   ~ age: double
   ~ name: String
@@ -35,7 +36,7 @@ class Begemot {
   + moveHero(double, double, double, double): void
   + fakeEnvironmentCreator(): void
 }
-class Bottom {
+class needed.Bottom {
   + Bottom(): 
   ~ orientation: OrientationOfPart
   ~ isIn: boolean
@@ -49,25 +50,25 @@ class Bottom {
   + getSlantAngleOfBody(): double
   + setSlantAngleOfBody(double): void
 }
-class Branch {
+class environment.fakeEnvironment.Branch {
   + Branch(double): 
   + Liana: Liana
   ~ length: double
 }
-class Chest {
+class needed.Chest {
   + Chest(): 
   ~ isIn: boolean
   ~ typeOfBodyPart: TypeOfBodyPart
   ~ orientation: OrientationOfPart
 }
-enum Colours << enumeration >> {
+enum enums.Colours << enumeration >> {
   + Colours(): 
   + WHITE: 
   + BLACK: 
   + valueOf(String): Colours
   + values(): Colours[]
 }
-class Conductor {
+class environment.orchestra.Conductor {
   + Conductor(InstrumentType): 
   ~ name: String
   ~ whiteStick: Stick
@@ -77,14 +78,14 @@ class Conductor {
   + moveHero(double, double, double, double): void
   + makeToPlay(boolean): void
 }
-class Frachnik {
+class environment.heroes.Frachnik {
   + Frachnik(): 
   ~ gender: Gender
   ~ name: String
   ~ age: double
   + moveHero(double, double, double, double): void
 }
-enum Gender << enumeration >> {
+enum enums.Gender << enumeration >> {
   + Gender(): 
   + FEMALE: 
   + MALE: 
@@ -92,7 +93,7 @@ enum Gender << enumeration >> {
   + values(): Gender[]
   + valueOf(String): Gender
 }
-class Head {
+class needed.Head {
   + Head(): 
   ~ nodAngle: double
   ~ isIn: boolean
@@ -108,14 +109,14 @@ class Head {
   + getNodAngle(): double
   + setNodAngle(double): void
 }
-class HeroesGenerator {
+class needed.HeroesGenerator {
   + HeroesGenerator(): 
   ~ margarita: Margarita
   ~ frachniks: Frachnik[]
   ~ korovyev: Korovyev
   ~ begemot: Begemot
 }
-class Human {
+class needed.Human {
   + Human(Gender, double, String): 
   + Human(): 
   + rArm: Arm
@@ -146,7 +147,7 @@ class Human {
   + noddingHead(Human, double): void
   + handOnArmSlanter(Human, OrientationOfPart, double): void
 }
-enum InstrumentType << enumeration >> {
+enum enums.InstrumentType << enumeration >> {
   + InstrumentType(): 
   + NOINSTRUMENT: 
   + VIOLIN: 
@@ -154,20 +155,20 @@ enum InstrumentType << enumeration >> {
   + values(): InstrumentType[]
   + valueOf(String): InstrumentType
 }
-class Korovyev {
+class environment.heroes.Korovyev {
   + Korovyev(): 
   ~ gender: Gender
   ~ age: double
   ~ name: String
   + moveHero(double, double, double, double): void
 }
-class Leg {
+class needed.Leg {
   + Leg(OrientationOfPart): 
   ~ orientation: OrientationOfPart
   ~ typeOfBodyPart: TypeOfBodyPart
   ~ isIn: boolean
 }
-class Liana {
+class environment.fakeEnvironment.Liana {
   + Liana(): 
   ~ onLiana: ArrayList<Object>
   ~ test: double
@@ -176,7 +177,7 @@ class Liana {
   + putHumanInLiana(Human): void
   + removeObjectFromLiana(Object): void
 }
-class Locator {
+class location.Locator {
   + Locator(): 
   + wallYCoordinate: double
   + fakeEnvironmentXStartCoordinate: double
@@ -220,10 +221,10 @@ class Main {
   + Main(): 
   + main(String[]): void
 }
-interface MakeToPlay << interface >> {
+interface needed.interfaces.MakeToPlay << interface >> {
   + makeToPlay(boolean): void
 }
-class Margarita {
+class environment.heroes.Margarita {
   + Margarita(): 
   ~ height: double
   + visionListHuman: ArrayList<Human>
@@ -238,7 +239,7 @@ class Margarita {
   ~ utils: Utils
   + moveHero(double, double, double, double): void
 }
-class Musician {
+class environment.orchestra.Musician {
   + Musician(InstrumentType): 
   ~ isHealthy: boolean
   ~ instrumentType: InstrumentType
@@ -247,10 +248,10 @@ class Musician {
   + moveHero(double, double, double, double): void
   + healthyChecker(Musician): void
 }
-class NotMovingArmsException {
+class exceptions.NotMovingArmsException {
   + NotMovingArmsException(String): 
 }
-class OrchestraAll {
+class environment.orchestra.OrchestraAll {
   + OrchestraAll(): 
   + violinPartOfOrchestra: ViolinPartOfOrchestra
   + trumpetPartOfOrchestra: TrumpetPartOfOrchestra
@@ -258,7 +259,7 @@ class OrchestraAll {
   + getViolinPartOfOrchestra(): ViolinPartOfOrchestra
   + getIJMusician(Musician[][], int, int): Musician
 }
-enum OrientationOfPart << enumeration >> {
+enum enums.OrientationOfPart << enumeration >> {
   + OrientationOfPart(): 
   + ZERO: 
   + RIGHT: 
@@ -266,20 +267,20 @@ enum OrientationOfPart << enumeration >> {
   + values(): OrientationOfPart[]
   + valueOf(String): OrientationOfPart
 }
-class PairCoordinates {
+class needed.utils.PairCoordinates {
   + PairCoordinates(double, double): 
   ~ x: double
   ~ y: double
   + getX(): double
   + getY(): double
 }
-class SomeoneInOrchestraIsSickException {
+class exceptions.SomeoneInOrchestraIsSickException {
   + SomeoneInOrchestraIsSickException(String): 
 }
-class SomeoneIsPlayingException {
+class exceptions.SomeoneIsPlayingException {
   + SomeoneIsPlayingException(String): 
 }
-class Stick {
+class needed.Stick {
   + Stick(double, Colours): 
   + colour: Colours
   + angle: double
@@ -287,21 +288,21 @@ class Stick {
   + getAngle(): double
   + setAngle(double): void
 }
-interface Talkable << interface >>
-class Tree {
+interface needed.Interfaces.Talkable << interface >>
+class environment.fakeEnvironment.Tree {
   + Tree(double, double): 
   ~ radius: double
   ~ height: double
   + getHeight(): double
   + getRadius(): double
 }
-class TropicalGarden {
+class environment.fakeEnvironment.TropicalGarden {
   + TropicalGarden(): 
   + tree: Tree
   + liana: Liana
   + branch: Branch
 }
-class TrumpetPartOfOrchestra {
+class environment.orchestra.TrumpetPartOfOrchestra {
   + TrumpetPartOfOrchestra(): 
   ~ lenght: double
   ~ height: double
@@ -309,14 +310,14 @@ class TrumpetPartOfOrchestra {
   ~ numberOfMusiciansInRow: int
   ~ numberOfMusiciansInColumn: int
 }
-entity Tulip << record >> {
+entity environment.Tulip << record >> {
   + Tulip(double, boolean): 
   - numberOfPetals: double
   - isOpened: boolean
   + numberOfPetals(): double
   + isOpened(): boolean
 }
-enum TypeOfBodyPart << enumeration >> {
+enum enums.TypeOfBodyPart << enumeration >> {
   + TypeOfBodyPart(): 
   + BOTTOM: 
   + ARM: 
@@ -326,14 +327,14 @@ enum TypeOfBodyPart << enumeration >> {
   + values(): TypeOfBodyPart[]
   + valueOf(String): TypeOfBodyPart
 }
-class Utils {
+class needed.utils.Utils {
   + Utils(): 
   + wallGrowHeightChecker(double, double): void
   + wallExistenceChecker(Wall): void
   + pairCoordinatesGenerator(double, double): PairCoordinates
   + earHPChecker(Human): void
 }
-class ViolinPartOfOrchestra {
+class environment.orchestra.ViolinPartOfOrchestra {
   + ViolinPartOfOrchestra(): 
   ~ numberOfMusiciansInRow: int
   ~ lenght: double
@@ -341,7 +342,7 @@ class ViolinPartOfOrchestra {
   ~ numberOfMusiciansInColumn: int
   + violinsAll: Musician[][]
 }
-class Wall {
+class environment.Wall {
   + Wall(): 
   ~ tulipArray: Tulip[][]
   ~ random: Random
@@ -351,19 +352,19 @@ class Wall {
   + tulipGrowerOnWall(): void
   + getHeight(): int
 }
-class WallHeightException {
+class exceptions.WallHeightException {
   + WallHeightException(String): 
 }
-class WallIsAlreadyExistsException {
+class exceptions.WallIsAlreadyExistsException {
   + WallIsAlreadyExistsException(String): 
 }
-class WrongArmPositionException {
+class exceptions.WrongArmPositionException {
   + WrongArmPositionException(String): 
 }
-class WrongHeadAngleException {
+class exceptions.WrongHeadAngleException {
   + WrongHeadAngleException(String): 
 }
-class WrongHeadNodAngleException {
+class exceptions.WrongHeadNodAngleException {
   + WrongHeadNodAngleException(String): 
 }
 
