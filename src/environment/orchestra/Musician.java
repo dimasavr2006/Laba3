@@ -25,7 +25,7 @@ public class Musician extends Human{
         super();
         this.instrumentType = instrumentType;
 
-        if (Math.random() <= 0.011){
+        if (Math.random() <= 0.001){
             this.isHealthy = false;
         }
         else{
