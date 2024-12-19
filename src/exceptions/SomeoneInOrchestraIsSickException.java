@@ -12,8 +12,19 @@ import needed.interfaces.*;
 import needed.utils.*;
 
 public class SomeoneInOrchestraIsSickException extends Exception {
+
+    private String message;
+
     public SomeoneInOrchestraIsSickException(String message) {
-        super(message);
+
+        this.message = message;
+
 //        System.exit(0);
+    }
+
+    @Override
+    public String getMessage() {
+        System.out.println("АПЧХИ!");
+        return message;
     }
 }

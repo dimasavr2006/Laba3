@@ -1,9 +1,17 @@
 package exceptions;
 
 public class WallHeightException extends Exception {
+
+    private String message;
+
     public WallHeightException(String message) {
-        super(message);
+        this.message = message;
 //        System.exit(0);
 
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
     }
 }

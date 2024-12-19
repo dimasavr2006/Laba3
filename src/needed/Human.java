@@ -16,6 +16,8 @@ public abstract class Human {
     private String name;
     private double earHP = 100;
 
+    public static final double height = 180;
+
     public Arm rArm;
     public Arm lArm;
     public Leg rLeg;
@@ -45,6 +47,10 @@ public abstract class Human {
 
     public double getEarHP() {
         return earHP;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Human(Gender gender, double age, String name) {
@@ -230,7 +236,7 @@ public abstract class Human {
 
     }
 
-    class Leg{
+    public final class Leg{
         boolean isIn = true;
         OrientationOfPart orientation;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.LEG;
@@ -238,7 +244,7 @@ public abstract class Human {
             this.orientation = orientation;
         }
     }
-    public class Arm{
+    public final class Arm{
         boolean isIn = true;
         OrientationOfPart orientation;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.ARM;
@@ -299,7 +305,7 @@ public abstract class Human {
             this.handAngleOnArm = handAngleOnArm;
         }
     }
-    public class Head{
+    public final class Head{
         boolean isIn = true;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.HEAD;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
@@ -338,7 +344,7 @@ public abstract class Human {
             return nodAngle;
         }
     }
-    public class Chest{
+    public final class Chest{
         boolean isIn = true;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.CHEST;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
@@ -347,7 +353,7 @@ public abstract class Human {
             this.isIn = true;
         }
     }
-    public class Bottom{
+    public final class Bottom{
         boolean isIn = true;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.BOTTOM;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
@@ -383,7 +389,22 @@ public abstract class Human {
         }
     }
 
+    @Override
+    public int hashCode() {
+        return gender.hashCode() * (int) earHP * 52;
+    }
 
+    @Override
+    public String toString() {
+        return "Человек по имени " + name + "роста " + height;
+    }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Human human = (Human) obj;
+        return age == human.age && gender == human.gender && earHP == human.earHP && name == human.name;
+    }
 }

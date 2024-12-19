@@ -19,10 +19,29 @@ public class Wall{
 
     Random random = new Random();
 
-    int height = random.nextInt(160, 180);
-    int width = random.nextInt(80, 150);
+    int wallRandomHeightStart = 160;
+    int wallRandomHeightEnd = 180;
+    int wallRandomWidthStart = 80;
+    int wallRandomWidthEnd = 150;
+
+    int height = random.nextInt(wallRandomHeightStart, wallRandomHeightEnd);
+    int width = random.nextInt(wallRandomWidthStart, wallRandomWidthEnd);
 
     Tulip[][] tulipArray = new Tulip[width][height];
+
+    public Wall(){
+
+        this.height = height;
+        this.width = width;
+
+        if (Math.random() < 0.001){
+            this.isExists = true;
+        }
+        else {
+            this.isExists = false;
+        }
+
+    }
 
     public void tulipGrowerOnWall(){
 
@@ -36,6 +55,20 @@ public class Wall{
     public int getHeight(){
         return height;
     }
+
+    public void checkWallHeightBtwMargarita(){
+
+        try{
+            if (wallRandomHeightEnd < Margarita.height){
+                throw new WallWrongInputHeightException(String.valueOf(wallRandomHeightEnd), String.valueOf(Margarita.height));
+            }
+        } catch (WallWrongInputHeightException e) {
+            throw new RuntimeException(e);
+
+        }
+
+    }
+
 
 
 

@@ -24,7 +24,7 @@ public class Margarita extends Human {
     public static double xCoord;
     public static double yCoord;
 
-    double height = 165;
+    public static final double height = 165;
 
     public Margarita() throws WallHeightException, WallIsAlreadyExistsException {
         super();
@@ -54,7 +54,9 @@ public class Margarita extends Human {
 
     public static ArrayList<Human> visionListHuman = new ArrayList<>();
 
-
+    public double getHeight() {
+        return height;
+    }
 
     @Override
     public void moveHero(double startXCoord, double moveOnXAxis, double startYCoord, double moveOnYAxis) {

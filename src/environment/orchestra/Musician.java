@@ -42,8 +42,31 @@ public class Musician extends Human{
 
     }
 
+    public InstrumentType getInstrumentType() {
+        return instrumentType;
+    }
+
     @Override
     public void moveHero(double startXCoord, double moveOnXAxis, double startYAxis, double moveOnYAxis) {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Музыкант, играющий на " + instrumentType + "здоров?: " + isHealthy;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() * instrumentType.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Musician musician = (Musician) obj;
+        if (musician.getName() == getName() && musician.getInstrumentType() == getInstrumentType()){
+            return true;
+        }
+        return false;
     }
 }
