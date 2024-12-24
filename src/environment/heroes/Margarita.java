@@ -7,7 +7,6 @@ import needed.*;
 import needed.utils.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Margarita extends Human {
 
@@ -47,8 +46,6 @@ public class Margarita extends Human {
     public final Wall wall = new Wall();
 
     final Utils utils = new Utils();
-
-    Random random = new Random();
 
     public static final ArrayList<Object> visionList = new ArrayList<>();
 

@@ -5,11 +5,7 @@ import exceptions.*;
 import needed.*;
 import needed.utils.gens.*;
 
-import java.util.Random;
-
 public class Musician extends Human{
-
-    Random random = new Random();
 
     final InstrumentType instrumentType;
     boolean isPlaying = false;
@@ -70,7 +66,9 @@ public class Musician extends Human{
 
     @Override
     public boolean equals(Object obj) {
-        Musician musician = (Musician) obj;
+        if (!(obj instanceof Musician musician)) {
+            return false;
+        }
         return musician.getName().equals(getName()) && musician.getInstrumentType() == getInstrumentType();
     }
 }

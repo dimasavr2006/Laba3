@@ -1,7 +1,5 @@
 package location;
 
-import needed.utils.*;
-
 
 import java.util.Random;
 
@@ -10,12 +8,7 @@ public class Locator {
     // TUT RASPISAT RAZMESHENIA OBIEKTOV V ZALE
     final Random random = new Random();
 
-    Utils utuls = new Utils();
-
-
     public Locator() {
-
-        mainGeneratorOfPlace();
 
     }
 
@@ -69,7 +62,7 @@ public class Locator {
 
 
 
-    private void mainGeneratorOfPlace() {
+    public void mainGeneratorOfPlace() {
 
         roomXCoordinate = random.nextDouble(90, 180);
         roomYCoordinate = random.nextDouble(160, 320);

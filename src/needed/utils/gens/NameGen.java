@@ -18,6 +18,7 @@ public class NameGen{
                 names.add(line.trim());
             }
         } catch (IOException e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
             return null; // В случае ошибки возвращаем null
         }

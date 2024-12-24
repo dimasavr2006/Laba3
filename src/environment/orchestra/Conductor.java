@@ -61,6 +61,7 @@ public class Conductor extends Musician implements MakeToPlay{
 
         checkIsPlayingAndTurnToAnotherCondition(orchestraAll.trumpetPartOfOrchestra.trumpetsAll, false, false);
         checkIsPlayingAndTurnToAnotherCondition(orchestraAll.violinPartOfOrchestra.violinsAll, false, false);
+        stickFollowing();
     }
 
     public void stickFollowing(){
@@ -84,6 +85,7 @@ public class Conductor extends Musician implements MakeToPlay{
                 musician.isPlaying = checkingCondition;
             }
         }
+        stickFollowing();
 
     }
 
@@ -101,10 +103,6 @@ public class Conductor extends Musician implements MakeToPlay{
 
         public void setAngle(double angle) {
             this.angle = angle;
-        }
-
-        public double getAngle() {
-            return angle;
         }
     }
 

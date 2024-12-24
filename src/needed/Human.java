@@ -12,7 +12,7 @@ import java.util.Random;
 public abstract class Human {
 
     private Gender gender;
-    private double age;
+    private final double age;
     private String name;
     private double earHP = 100;
 
@@ -31,9 +31,6 @@ public abstract class Human {
 
     public abstract void moveHero (double moveOnXAxis, double moveOnYAxis);
 
-    public void setAge(double age) {
-        this.age = age;
-    }
     public void setGender(Gender gender) {
         this.gender = gender;
     }

@@ -10,9 +10,13 @@ import location.*;
 
 public class ActionMaker {
 
-    public ActionMaker() throws WallIsAlreadyExistsException, WallHeightException, SomeoneInOrchestraIsSickException, SomeoneIsPlayingException, NotMovingArmsException, WrongArmPositionException, BecomeDeafException, WrongHeadAngleException, WrongHeadNodAngleException {
+    public ActionMaker(){
 
+    }
+
+    public void starter() throws WallIsAlreadyExistsException, WallHeightException, SomeoneInOrchestraIsSickException, SomeoneIsPlayingException, NotMovingArmsException, WrongArmPositionException, BecomeDeafException, WrongHeadAngleException, WrongHeadNodAngleException {
         HeroesGenerator heroesGen = new HeroesGenerator();
+        heroesGen.starter();
         Conductor conductor = new Conductor(InstrumentType.NOINSTRUMENT);
 
         conductor.makeToPlay(false);
@@ -81,7 +85,6 @@ public class ActionMaker {
         tg.liana.putHumanInLiana(heroesGen.begemot);
         tg.branchesCreator();
         tg.usingOfTreeAndBranch(tg.choseBranches(tg.branches), tg.deltaHPCalculator(heroesGen.begemot), true);
-
-
     }
+
 }

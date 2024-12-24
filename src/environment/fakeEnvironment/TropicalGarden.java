@@ -8,14 +8,14 @@ import java.util.Random;
 
 public class TropicalGarden {
 
-    Random random = new Random();
+    final Random random = new Random();
 
-    public Tree tree = new Tree(5, 0.8);
-    public Branch.Liana liana = new Branch.Liana();
+    public final Tree tree = new Tree(5, 0.8);
+    public final Branch.Liana liana = new Branch.Liana();
 
     int countOfBranches = random.nextInt(1, 5);
 
-    public Branch[] branches = new Branch[countOfBranches];
+    public final Branch[] branches = new Branch[countOfBranches];
 
     public TropicalGarden() {
 
@@ -23,8 +23,8 @@ public class TropicalGarden {
 
     public class Tree {
 
-        double height;
-        double radius;
+        final double height;
+        final double radius;
 
         double treeHP = 100;
 
@@ -88,7 +88,7 @@ public class TropicalGarden {
     }
 
     public double deltaHPCalculator(Human human) {
-        return human.hashCode() * (-0.01);
+        return Math.abs(human.hashCode() * (0.01));
     }
 
     public double getTreeHP(){
@@ -96,10 +96,10 @@ public class TropicalGarden {
     }
 
     public class Branch {
-        ArrayList<Object> onBranch = new ArrayList<>();
+        final ArrayList<Object> onBranch = new ArrayList<>();
         public static Branch.Liana Liana;
         final double length;
-        double branchHP = 100;
+        double branchHP = 100 * tree.radius / tree.height;
 
         public Branch(double length) {
             this.length = length;
@@ -122,14 +122,12 @@ public class TropicalGarden {
         public static class Liana {
             final ArrayList<Object> onLiana = new ArrayList<>();
 
-            double test;
-
             public Liana() {
             }
 
             public void putHumanInLiana(Human human){
                 onLiana.add(human);
-                test = human.bottom.getTurnAngleOfBody();
+                double test = human.bottom.getTurnAngleOfBody();
                 double end = 180;
                 human.bottom.setTurnAngleOfBody(end);
 
