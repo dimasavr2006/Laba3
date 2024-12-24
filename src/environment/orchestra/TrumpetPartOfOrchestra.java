@@ -6,13 +6,13 @@ import location.Locator;
 
 public class TrumpetPartOfOrchestra{
 
-    double lenght;
-    double height;
+    final double lenght;
+    final double height;
 
-    int numberOfMusiciansInRow;
-    int numberOfMusiciansInColumn;
+    final int numberOfMusiciansInRow;
+    final int numberOfMusiciansInColumn;
 
-    public Musician[][] trumpetsAll;
+    public final Musician[][] trumpetsAll;
 
     public TrumpetPartOfOrchestra() throws SomeoneInOrchestraIsSickException {
 

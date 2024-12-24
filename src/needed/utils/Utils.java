@@ -1,25 +1,11 @@
 package needed.utils;
 
-import environment.heroes.Margarita;
-import exceptions.WallHeightException;
-import exceptions.WallIsAlreadyExistsException;
-import environment.heroes.*;
 import environment.*;
-import environment.orchestra.*;
-import environment.fakeEnvironment.*;
-import enums.*;
+import environment.orchestra.Musician;
 import exceptions.*;
-import location.*;
 import needed.*;
-import needed.interfaces.*;
-
-import needed.utils.*;
 
 public class Utils {
-
-    public PairCoordinates pairCoordinatesGenerator(double x, double y) {
-        return new PairCoordinates(x, y);
-    }
 
     public void wallGrowHeightChecker(double margaritaHeight, double wallHeight) throws WallHeightException {
 
@@ -29,7 +15,7 @@ public class Utils {
     }
     public void wallExistenceChecker (Wall wall) throws WallIsAlreadyExistsException {
 
-        if (wall.isExists == true){
+        if (wall.isExists){
 
             throw new WallIsAlreadyExistsException("стена уже есть");
 
@@ -46,5 +32,4 @@ public class Utils {
         }
 
     }
-
 }

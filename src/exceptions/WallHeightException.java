@@ -2,7 +2,7 @@ package exceptions;
 
 public class WallHeightException extends Exception {
 
-    private String message;
+    private final String message;
 
     public WallHeightException(String message) {
         this.message = message;

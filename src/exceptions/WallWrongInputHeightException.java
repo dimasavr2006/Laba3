@@ -2,26 +2,26 @@ package exceptions;
 
 public class WallWrongInputHeightException extends RuntimeException {
 
-  private String random;
-  private String height;
-  private String result;
+    private final double random;
+    private final double height;
+    private final String result;
 
-  public WallWrongInputHeightException(String maxRandomHeight, String maxHeight) {
-    this.random = maxRandomHeight;
-    this.height = maxHeight;
+    public WallWrongInputHeightException(double maxRandomHeight, double maxHeight) {
+        this.random = maxRandomHeight;
+        this.height = maxHeight;
 
-    result = returner();
+        result = returner();
 
-  }
+    }
 
-  private String returner(){
-    String toReturn;
-    toReturn = "Максимальная высота стены: " + random + ", а рост маргариты: " + height + "что некорректно";
-    return toReturn;
-  }
+    private String returner(){
+        String toReturn;
+        toReturn = "Максимальная высота стены: " + random + ", а рост маргариты: " + height + "что некорректно";
+        return toReturn;
+    }
 
-  @Override
-  public String getMessage() {
-    return result;
-  }
+    @Override
+    public String getMessage() {
+        return result;
+    }
 }

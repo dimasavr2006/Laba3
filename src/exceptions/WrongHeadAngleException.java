@@ -2,7 +2,7 @@ package exceptions;
 
 public class WrongHeadAngleException extends Exception {
 
-    private String message;
+    private final String message;
 
     public WrongHeadAngleException(String message) {
         this.message = message;

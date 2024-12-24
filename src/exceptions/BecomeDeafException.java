@@ -2,7 +2,7 @@ package exceptions;
 
 public class BecomeDeafException extends Exception {
 
-    private String message;
+    private final String message;
 
     public BecomeDeafException(String message) {
         this.message = message;

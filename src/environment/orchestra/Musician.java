@@ -1,15 +1,9 @@
 package environment.orchestra;
 
-import environment.heroes.*;
-import environment.*;
-import environment.orchestra.*;
-import environment.fakeEnvironment.*;
 import enums.*;
 import exceptions.*;
-import location.*;
 import needed.*;
-import needed.interfaces.*;
-import needed.utils.*;
+import needed.utils.gens.*;
 
 import java.util.Random;
 
@@ -17,27 +11,40 @@ public class Musician extends Human{
 
     Random random = new Random();
 
-    InstrumentType instrumentType;
+    final InstrumentType instrumentType;
     boolean isPlaying = false;
-    boolean isHealthy;
+    final boolean isHealthy;
 
     public Musician(InstrumentType instrumentType){
         super();
+
+        if (Math.random() < 0.5){
+            setGender(Gender.FEMALE);
+        }
+
+        musicianNamer(getGender());
+
         this.instrumentType = instrumentType;
 
-        if (Math.random() <= 0.001){
-            this.isHealthy = false;
-        }
-        else{
-            this.isHealthy = true;
-        }
+        this.isHealthy = !(Math.random() <= 0.001);
 
     }
 
     public void healthyChecker(Musician musician) throws SomeoneInOrchestraIsSickException {
 
-        if (musician.isHealthy == false){
+        if (!musician.isHealthy){
             throw new SomeoneInOrchestraIsSickException("Кто-то в оркестре болен!");
+        }
+
+    }
+
+    private void musicianNamer(Gender gender){
+
+        if (gender == Gender.MALE){
+            setName(NameGen.getRandomNameFromFile("src/needed/utils/gens/male_names_rus.txt"));
+        }
+        else if (gender == Gender.FEMALE){
+            setName(NameGen.getRandomNameFromFile("src/needed/utils/gens/female_names_rus.txt"));
         }
 
     }
@@ -47,7 +54,7 @@ public class Musician extends Human{
     }
 
     @Override
-    public void moveHero(double startXCoord, double moveOnXAxis, double startYAxis, double moveOnYAxis) {
+    public void moveHero(double moveOnXAxis, double moveOnYAxis) {
 
     }
 
@@ -64,9 +71,6 @@ public class Musician extends Human{
     @Override
     public boolean equals(Object obj) {
         Musician musician = (Musician) obj;
-        if (musician.getName() == getName() && musician.getInstrumentType() == getInstrumentType()){
-            return true;
-        }
-        return false;
+        return musician.getName().equals(getName()) && musician.getInstrumentType() == getInstrumentType();
     }
 }

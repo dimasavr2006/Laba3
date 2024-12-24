@@ -2,7 +2,7 @@ package exceptions;
 
 public class WrongArmPositionException extends Exception {
 
-    private String message;
+    private final String message;
 
     public WrongArmPositionException(String message) {
         this.message = message;

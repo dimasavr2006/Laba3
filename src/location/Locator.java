@@ -8,7 +8,7 @@ import java.util.Random;
 public class Locator {
 
     // TUT RASPISAT RAZMESHENIA OBIEKTOV V ZALE
-    Random random = new Random();
+    final Random random = new Random();
 
     Utils utuls = new Utils();
 
@@ -108,13 +108,5 @@ public class Locator {
         fakeEnvironmentXEndCoordinate = roomXCoordinate;
         fakeEnvironmentYStartCoordinate = orchestraAnsambleEndYCoordinate;
         fakeEnvironmentYEndCoordinate = roomYCoordinate;
-    }
-
-
-    public double getHeroMargaritaXCoordinate() {
-        return heroMargaritaXCoordinate;
-    }
-    public double getHeroMargaritaYCoordinate() {
-        return heroMargaritaYCoordinate;
     }
 }

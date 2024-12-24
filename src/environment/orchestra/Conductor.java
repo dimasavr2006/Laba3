@@ -7,9 +7,9 @@ import needed.interfaces.*;
 // DIRIZHER ESLI CHTO
 public class Conductor extends Musician implements MakeToPlay{
 
-    String name;
+    final String name;
 
-    Stick whiteStick = new Stick(5, Colours.WHITE);
+    final Stick whiteStick = new Stick(5, Colours.WHITE);
 
     public Conductor(InstrumentType instrumentType){
         super(InstrumentType.NOINSTRUMENT);
@@ -37,89 +37,60 @@ public class Conductor extends Musician implements MakeToPlay{
         lArm.setCoordY(y1);
 
         y2 = lArm.getCoordY();
-        lArm.setCoordX(1);
-        lArm.setCoordX(y2);
+        lArm.setCoordY(1);
+        lArm.setCoordY(y2);
+
     }
 
     @Override
     public void makeToPlay(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException, NotMovingArmsException {
 
-        if (isNeededToMoveArms == true){
-            armsMover();
-        } else if (isNeededToMoveArms == false) {
-            //
-        }
-
-
         OrchestraAll orchestraAll = new OrchestraAll();
         Musician[][] partViolin = orchestraAll.violinPartOfOrchestra.violinsAll;
         Musician[][] partTrumpet = orchestraAll.trumpetPartOfOrchestra.trumpetsAll;
 
-        for (int i = 0; i < partViolin.length; i++) {
-            for (int j = 0; j < partViolin[i].length; j++) {
-
-                if (partViolin[i][j].isPlaying == true){
-                    throw new SomeoneIsPlayingException("Кто-то уже играет!!!");
-                }
-
-                partViolin[i][j].isPlaying = true;
-            }
-        }
-        for (int i = 0; i < partTrumpet.length; i++) {
-            for (int j = 0; j < partTrumpet[i].length; j++) {
-
-                if (partTrumpet[i][j].isPlaying == true){
-                    throw new SomeoneIsPlayingException("Кто-то уже играет!!!");
-                }
-
-                partTrumpet[i][j].isPlaying = true;
-            }
-        }
-
+        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.violinPartOfOrchestra.violinsAll, true, isNeededToMoveArms);
+        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.trumpetPartOfOrchestra.trumpetsAll, true, isNeededToMoveArms);
     }
 
-    public void makeStopPlaying() throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException {
+    public void makeStopPlaying() throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException, NotMovingArmsException {
 
         OrchestraAll orchestraAll = new OrchestraAll();
         Musician[][] partViolin = orchestraAll.violinPartOfOrchestra.violinsAll;
         Musician[][] partTrumpet = orchestraAll.trumpetPartOfOrchestra.trumpetsAll;
 
-        for (int i = 0; i < partViolin.length; i++) {
-            for (int j = 0; j < partViolin[i].length; j++) {
-
-                if (partViolin[i][j].isPlaying == false){
-                    throw new SomeoneIsPlayingException("Кто-то халявил!!!");
-                }
-
-                partViolin[i][j].isPlaying = false;
-            }
-        }
-        for (int i = 0; i < partTrumpet.length; i++) {
-            for (int j = 0; j < partTrumpet[i].length; j++) {
-
-                if (partTrumpet[i][j].isPlaying == false){
-                    throw new SomeoneIsPlayingException("Кто-то халявил!!!");
-                }
-
-                partTrumpet[i][j].isPlaying = false;
-            }
-        }
-
+        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.trumpetPartOfOrchestra.trumpetsAll, false, false);
+        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.violinPartOfOrchestra.violinsAll, false, false);
     }
 
     public void stickFollowing(){
         whiteStick.setAngle(this.rArm.handAngleOnArm);
     }
 
-    @Override
-    public void moveHero(double startXCoord, double moveOnXAxis, double startYAxis, double moveOnYAxis) {
+    private void checkIsPlayingAndTurnToAnotherCondition(Musician[][] partOfOrchestra, boolean checkingCondition, boolean needToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException {
+
+        if (needToMoveArms){
+            armsMover();
+        }
+
+        for (Musician[] musicians : partOfOrchestra) {
+            for (Musician musician : musicians) {
+                if (musician.isPlaying == checkingCondition) {
+                    switch (isPlaying) {
+                        case true -> throw new SomeoneIsPlayingException("Кто-то халявил!!!");
+                        case false -> throw new SomeoneIsPlayingException("Кто-то уже играет!!!");
+                    }
+                }
+                musician.isPlaying = checkingCondition;
+            }
+        }
 
     }
 
-    public class Stick{
+    public static class Stick{
 
-        public double length;
-        public Colours colour;
+        public final double length;
+        public final Colours colour;
         public double angle;
 
         public Stick(double length, Colours colour){

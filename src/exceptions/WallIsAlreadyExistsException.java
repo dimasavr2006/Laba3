@@ -2,7 +2,7 @@ package exceptions;
 
 public class WallIsAlreadyExistsException extends Exception {
 
-    private String message;
+    private final String message;
 
     public WallIsAlreadyExistsException(String message) {
         this.message = message;

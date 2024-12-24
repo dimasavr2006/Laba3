@@ -26,10 +26,10 @@ public abstract class Human {
     public Head head;
     public Bottom bottom;
 
-    Random random = new Random();
-    Utils utils = new Utils();
+    final Random random = new Random();
+    final Utils utils = new Utils();
 
-    public abstract void moveHero (double startXCoord, double moveOnXAxis, double startYAxis , double moveOnYAxis);
+    public abstract void moveHero (double moveOnXAxis, double moveOnYAxis);
 
     public void setAge(double age) {
         this.age = age;
@@ -53,13 +53,17 @@ public abstract class Human {
         return name;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
     public Human(Gender gender, double age, String name) {
         this.gender = gender;
         this.age = age;
         this.name = name;
     }
     public Human(){
-        this.gender = Gender.ZERO;
+        this.gender = Gender.MALE;
         this.age = 0;
         this.name = "Human";
         this.earHP = 100;
@@ -116,7 +120,7 @@ public abstract class Human {
     }
     public void moveFullArmForDegree(Human human,OrientationOfPart armOrientation, double degrees) throws WrongArmPositionException {
 
-        if (human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0 || human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0) {
+        if (human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0 || human.rArm.getAngleOnBody() > 180 || human.rArm.getAngleOnBody() < 0) {
 
             throw new WrongArmPositionException("Рука стоит неестественно");
 
@@ -131,7 +135,7 @@ public abstract class Human {
             human.lArm.setAngleOnBody(startDegreeL + degrees);
         }
 
-        if (human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0 || human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0) {
+        if (human.lArm.getAngleOnBody() > 180 || human.lArm.getAngleOnBody() < 0 || human.rArm.getAngleOnBody() > 180 || human.rArm.getAngleOnBody() < 0) {
 
             throw new WrongArmPositionException("Рука стоит неестественно");
 
@@ -157,19 +161,14 @@ public abstract class Human {
 
     public void changeSmileCondition(Human human){
 
-        if (human.head.getSmiling() == false){
-            human.head.setSmiling(true);
-        }
-        else if (human.head.getSmiling() == true){
-            human.head.setSmiling(false);
-        }
+        human.head.setSmiling(!human.head.getSmiling());
 
     }
 
     public void handOnArmSlanter (Human human, OrientationOfPart orientation, double degrees){
 
         int turner = 0;
-        double start = 0;
+        double start;
         double middle = 0;
 
         if (orientation == OrientationOfPart.RIGHT) {
@@ -238,7 +237,7 @@ public abstract class Human {
 
     public final class Leg{
         boolean isIn = true;
-        OrientationOfPart orientation;
+        final OrientationOfPart orientation;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.LEG;
         public Leg(OrientationOfPart orientation) {
             this.orientation = orientation;
@@ -246,7 +245,7 @@ public abstract class Human {
     }
     public final class Arm{
         boolean isIn = true;
-        OrientationOfPart orientation;
+        final OrientationOfPart orientation;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.ARM;
 
         public double coordX;
@@ -256,12 +255,10 @@ public abstract class Human {
 
         public double handAngleOnArm;
 
-        public ArrayList<Object> inHand = new ArrayList<Object>();
+        public final ArrayList<Object> inHand = new ArrayList<>();
 
         public Arm(OrientationOfPart orientation) {
             this.orientation = orientation;
-            this.typeOfBodyPart = TypeOfBodyPart.ARM;
-            this.isIn = true;
 
             this.coordX = 0;
             this.coordY = 0;
@@ -309,13 +306,11 @@ public abstract class Human {
         boolean isIn = true;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.HEAD;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
-        boolean isSmiling = false;
-        boolean isWhite;
+        boolean isSmiling;
+        final boolean isWhite;
         double turningAngle;
         double nodAngle;
         public Head(){
-            this.typeOfBodyPart = TypeOfBodyPart.HEAD;
-            this.isIn = true;
             this.isSmiling = false;
             this.isWhite = false;
             this.turningAngle = 0;
@@ -349,8 +344,6 @@ public abstract class Human {
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.CHEST;
         OrientationOfPart orientation = OrientationOfPart.ZERO;
         public Chest(){
-            this.typeOfBodyPart = TypeOfBodyPart.CHEST;
-            this.isIn = true;
         }
     }
     public final class Bottom{
@@ -360,8 +353,6 @@ public abstract class Human {
         double turnAngleOfBody;
         double slantAngleOfBody;
         public Bottom(){
-            this.typeOfBodyPart = TypeOfBodyPart.BOTTOM;
-            this.isIn = true;
             this.turnAngleOfBody = 0;
             this.slantAngleOfBody = 0;
         }
@@ -405,6 +396,6 @@ public abstract class Human {
             return false;
         }
         Human human = (Human) obj;
-        return age == human.age && gender == human.gender && earHP == human.earHP && name == human.name;
+        return age == human.age && gender == human.gender && earHP == human.earHP && name.equals(human.name);
     }
 }

@@ -20,7 +20,7 @@ public class ActionMaker {
         Margarita.visionList.add(heroesGen.frachniks[0]);
         Margarita.visionList.add(heroesGen.frachniks[1]);
 
-        heroesGen.margarita.moveHero(Margarita.xCoord, Locator.npcConductorXCoordinate - Margarita.xCoord, Margarita.yCoord, Locator.npcConductorYCoordinate - Margarita.yCoord);
+        heroesGen.margarita.moveHero(Locator.npcConductorXCoordinate - Margarita.xCoord,  Locator.npcConductorYCoordinate - Margarita.yCoord);
 
         Margarita.visionList.clear();
 
@@ -79,6 +79,7 @@ public class ActionMaker {
 
         TropicalGarden tg = new TropicalGarden();
         tg.liana.putHumanInLiana(heroesGen.begemot);
+        tg.usingOfTreeAndBranch(tg.choseBranches(tg.branches), tg.deltaHPCalculator(heroesGen.begemot), true);
 
 
     }

@@ -2,7 +2,7 @@ package exceptions;
 
 public class SomeoneIsPlayingException extends Exception {
 
-    private String message;
+    private final String message;
 
     public SomeoneIsPlayingException(String message) {
 

@@ -1,15 +1,8 @@
 package environment.heroes;
 
-import environment.heroes.*;
-import environment.*;
-import environment.orchestra.*;
 import environment.fakeEnvironment.*;
 import enums.*;
-import exceptions.*;
-import location.*;
 import needed.*;
-import needed.interfaces.*;
-import needed.utils.*;
 
 public class Begemot extends Human {
 
@@ -19,9 +12,6 @@ public class Begemot extends Human {
 
     public Begemot() {
         super();
-        this.gender = gender;
-        this.age = age;
-        this.name = name;
     }
 
     public void fakeEnvironmentCreator(){
@@ -31,7 +21,7 @@ public class Begemot extends Human {
     }
 
     @Override
-    public void moveHero(double startXCoord, double moveOnXAxis, double startYAxis, double moveOnYAxis) {
+    public void moveHero(double moveOnXAxis, double moveOnYAxis) {
 
     }
 }

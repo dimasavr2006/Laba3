@@ -2,6 +2,6 @@ package enums;
 
 public enum Gender {
 
-    ZERO, MALE, FEMALE;
+    MALE, FEMALE
 
 }
