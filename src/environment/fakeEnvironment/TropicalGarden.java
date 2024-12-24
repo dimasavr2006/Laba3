@@ -49,15 +49,17 @@ public class TropicalGarden {
 
         int testNow;
         int testMax = 0;
+        int count = 0;
 
         for (int i = 0; i < countOfBranches; i++) {
             testNow = branches[i].hashCode();
             if (testNow > testMax) {
                 testMax = testNow;
+                count = i;
             }
         }
-        branches[testMax].onBranch.add(environment.fakeEnvironment.TropicalGarden.Branch.Liana);
-        return branches[testMax];
+        branches[count].onBranch.add(Branch.Liana);
+        return branches[count];
     }
 
     public void usingOfTreeAndBranch(Branch branch, double deltaHP, boolean isDamage1OrHeal0) {
@@ -86,7 +88,7 @@ public class TropicalGarden {
     }
 
     public double deltaHPCalculator(Human human) {
-        return human.hashCode() * 0.01;
+        return human.hashCode() * (-0.01);
     }
 
     public double getTreeHP(){

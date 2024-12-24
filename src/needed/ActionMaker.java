@@ -79,6 +79,7 @@ public class ActionMaker {
 
         TropicalGarden tg = new TropicalGarden();
         tg.liana.putHumanInLiana(heroesGen.begemot);
+        tg.branchesCreator();
         tg.usingOfTreeAndBranch(tg.choseBranches(tg.branches), tg.deltaHPCalculator(heroesGen.begemot), true);
 
 
