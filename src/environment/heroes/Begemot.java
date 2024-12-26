@@ -2,6 +2,7 @@ package environment.heroes;
 
 import environment.fakeEnvironment.*;
 import enums.*;
+import location.Locator;
 import needed.*;
 
 public class Begemot extends Human {
@@ -12,6 +13,10 @@ public class Begemot extends Human {
 
     public Begemot() {
         super();
+
+        xCoord = Locator.heroBegemotXCoordinate;
+        yCoord = Locator.heroBegemotYCoordinate;
+
     }
 
     public void fakeEnvironmentCreator(){

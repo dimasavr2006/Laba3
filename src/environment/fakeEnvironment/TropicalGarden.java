@@ -1,6 +1,7 @@
 package environment.fakeEnvironment;
 
 import exceptions.TreeDestroyingException;
+import location.Locator;
 import needed.Human;
 
 import java.util.ArrayList;
@@ -16,6 +17,13 @@ public class TropicalGarden {
     int countOfBranches = random.nextInt(1, 5);
 
     public final Branch[] branches = new Branch[countOfBranches];
+
+    public static double startX = Locator.fakeEnvironmentXStartCoordinate;
+    public static double startY = Locator.fakeEnvironmentYStartCoordinate;
+    public static double endX = Locator.fakeEnvironmentXEndCoordinate;
+    public static double endY = Locator.fakeEnvironmentYEndCoordinate;
+
+    static double volume = (Math.abs(endX-startX)) * (Math.abs(endY-startY));
 
     public TropicalGarden() {
 
@@ -116,7 +124,7 @@ public class TropicalGarden {
 
         @Override
         public int hashCode() {
-            return (int) (branchHP * length * countOfBranches);
+            return (int) ((int) (branchHP * length * countOfBranches) * (volume * 0.001));
         }
 
         public static class Liana {
@@ -127,7 +135,7 @@ public class TropicalGarden {
 
             public void putHumanInLiana(Human human){
                 onLiana.add(human);
-                double test = human.bottom.getTurnAngleOfBody();
+//                double test = human.bottom.getTurnAngleOfBody();
                 double end = 180;
                 human.bottom.setTurnAngleOfBody(end);
 

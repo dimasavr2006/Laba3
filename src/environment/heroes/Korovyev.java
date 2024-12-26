@@ -1,6 +1,7 @@
 package environment.heroes;
 
 import enums.*;
+import location.Locator;
 import needed.*;
 
 public class Korovyev extends Human {
@@ -11,6 +12,8 @@ public class Korovyev extends Human {
 
     public Korovyev() {
         super();
+        xCoord = Locator.heroKorovyevXCoordinate;
+        yCoord = Locator.heroKorovyevYCoordinate;
     }
 
     @Override

@@ -2,6 +2,7 @@ package environment.orchestra;
 
 import enums.*;
 import exceptions.*;
+import location.Locator;
 import needed.interfaces.*;
 
 // DIRIZHER ESLI CHTO
@@ -13,8 +14,12 @@ public class Conductor extends Musician implements MakeToPlay{
 
     public Conductor(InstrumentType instrumentType){
         super(InstrumentType.NOINSTRUMENT);
+
         this.name = "Иоганн Штраус";
         this.rArm.inHand.add(whiteStick);
+
+        xCoord = Locator.npcConductorXCoordinate;
+        yCoord = Locator.npcConductorYCoordinate;
 
     }
 

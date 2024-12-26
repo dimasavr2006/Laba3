@@ -3,6 +3,7 @@ package environment.heroes;
 import environment.*;
 import enums.*;
 import exceptions.*;
+import location.Locator;
 import needed.*;
 import needed.utils.*;
 
@@ -14,13 +15,13 @@ public class Margarita extends Human {
     double age = 33;
     String name = "Маргарита";
 
-    public static double xCoord;
-    public static double yCoord;
-
     public static final double height = 165;
 
     public Margarita() throws WallHeightException, WallIsAlreadyExistsException {
         super();
+
+        xCoord = Locator.heroMargaritaXCoordinate;
+        yCoord = Locator.heroMargaritaYCoordinate;
 
         try {
             if (wall.getWallRandomHeightEnd() < height) {

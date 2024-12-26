@@ -18,6 +18,9 @@ public abstract class Human {
 
     public static final double height = 180;
 
+    public static double xCoord;
+    public static double yCoord;
+
     public Arm rArm;
     public Arm lArm;
     public Leg rLeg;
