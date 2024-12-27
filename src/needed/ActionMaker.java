@@ -28,7 +28,7 @@ public class ActionMaker {
 
         Margarita.visionList.clear();
 
-        //HIT BY MUSIC
+
         Margarita.visionListHuman.add(heroesGen.begemot);
         Margarita.visionListHuman.add(heroesGen.korovyev);
 
