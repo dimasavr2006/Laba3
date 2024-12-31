@@ -10,6 +10,8 @@ import location.*;
 
 public class ActionMaker {
 
+    Locator locator = new Locator();
+
     public ActionMaker(){
 
     }
@@ -24,7 +26,7 @@ public class ActionMaker {
         Margarita.visionList.add(heroesGen.frachniks[0]);
         Margarita.visionList.add(heroesGen.frachniks[1]);
 
-        heroesGen.margarita.moveHero(Locator.npcConductorXCoordinate - Margarita.xCoord,  Locator.npcConductorYCoordinate - Margarita.yCoord);
+        heroesGen.margarita.moveHero(locator.getNpcConductorXCoordinate() - heroesGen.margarita.getXCoord(),  locator.getNpcConductorYCoordinate() - heroesGen.margarita.getYCoord());
 
         Margarita.visionList.clear();
 

@@ -11,11 +11,13 @@ public class Begemot extends Human {
     double age = 25;
     String name = "Бегемот";
 
+    Locator locator = new Locator();
+
     public Begemot() {
         super();
 
-        xCoord = Locator.heroBegemotXCoordinate;
-        yCoord = Locator.heroBegemotYCoordinate;
+        setXCoord(locator.getHeroBegemotXCoordinate());
+        setYCoord(locator.getHeroBegemotYCoordinate());
 
     }
 

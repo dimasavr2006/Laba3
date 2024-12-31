@@ -10,10 +10,14 @@ public class Korovyev extends Human {
     double age = 43;
     String name = "Мрачный рыцарь";
 
+    Locator locator = new Locator();
+
     public Korovyev() {
         super();
-        xCoord = Locator.heroKorovyevXCoordinate;
-        yCoord = Locator.heroKorovyevYCoordinate;
+
+        setXCoord(locator.getHeroKorovyevXCoordinate());
+        setYCoord(locator.getHeroKorovyevYCoordinate());
+
     }
 
     @Override

@@ -14,10 +14,12 @@ public class TrumpetPartOfOrchestra{
 
     public final Musician[][] trumpetsAll;
 
+    Locator locator = new Locator();
+
     public TrumpetPartOfOrchestra() throws SomeoneInOrchestraIsSickException {
 
-        this.lenght = Math.abs(Locator.orchestraAnsambleOtherStartXCoordinate - Locator.orchestraAnsambleOtherEndXCoordinate);
-        this.height = Math.abs(Locator.orchestraAnsambleOtherStartYCoordinate - Locator.orchestraAnsambleOtherEndYCoordinate);
+        this.lenght = Math.abs(locator.getOrchestraAnsambleOtherStartXCoordinate() - locator.getOrchestraAnsambleOtherEndXCoordinate());
+        this.height = Math.abs(locator.getOrchestraAnsambleOtherStartYCoordinate() - locator.getOrchestraAnsambleOtherEndYCoordinate());
 
         this.numberOfMusiciansInRow = (int) lenght / 10;
         this.numberOfMusiciansInColumn = (int) height / 10;

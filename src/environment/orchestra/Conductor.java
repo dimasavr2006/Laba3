@@ -10,6 +10,8 @@ public class Conductor extends Musician implements MakeToPlay{
 
     final String name;
 
+    Locator locator = new Locator();
+
     final Stick whiteStick = new Stick(5, Colours.WHITE);
 
     public Conductor(InstrumentType instrumentType){
@@ -18,8 +20,8 @@ public class Conductor extends Musician implements MakeToPlay{
         this.name = "Иоганн Штраус";
         this.rArm.inHand.add(whiteStick);
 
-        xCoord = Locator.npcConductorXCoordinate;
-        yCoord = Locator.npcConductorYCoordinate;
+        setXCoord(locator.getNpcConductorXCoordinate());
+        setYCoord(locator.getNpcConductorYCoordinate());
 
     }
 
@@ -70,7 +72,7 @@ public class Conductor extends Musician implements MakeToPlay{
     }
 
     public void stickFollowing(){
-        whiteStick.setAngle(this.rArm.handAngleOnArm);
+        whiteStick.setAngle(this.rArm.getHandAngleOnArm());
     }
 
     private void checkIsPlayingAndTurnToAnotherCondition(Musician[][] partOfOrchestra, boolean checkingCondition, boolean needToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException {

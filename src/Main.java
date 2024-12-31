@@ -7,4 +7,17 @@ public static void main(String[] args) throws WrongArmPositionException, WrongHe
     locator.mainGeneratorOfPlace();
     ActionMaker actionMaker = new ActionMaker();
     actionMaker.starter();
+
+    /*
+    поправить солид (модификаторы доступа)
+
+    люди со скрипками и трубами, не через енам а через наличие инструмента в руке
+
+    переместить задание музыкантов
+
+    развернуть в 3д
+
+    действие с музыкальными инструментами (взять в руку и тд. хватание трубы и тд, интерфейс )
+    */
+
 }

@@ -11,6 +11,8 @@ public class TropicalGarden {
 
     final Random random = new Random();
 
+    Locator locator = new Locator();
+
     public final Tree tree = new Tree(5, 0.8);
     public final Branch.Liana liana = new Branch.Liana();
 
@@ -18,16 +20,18 @@ public class TropicalGarden {
 
     public final Branch[] branches = new Branch[countOfBranches];
 
-    public static double startX = Locator.fakeEnvironmentXStartCoordinate;
-    public static double startY = Locator.fakeEnvironmentYStartCoordinate;
-    public static double endX = Locator.fakeEnvironmentXEndCoordinate;
-    public static double endY = Locator.fakeEnvironmentYEndCoordinate;
+    private double startX = locator.getFakeEnvironmentXStartCoordinate();
+    private double startY = locator.getFakeEnvironmentYStartCoordinate();
+    private double endX = locator.getFakeEnvironmentXEndCoordinate();
+    private double endY = locator.getFakeEnvironmentYEndCoordinate();
 
-    static double volume = (Math.abs(endX-startX)) * (Math.abs(endY-startY));
+    double volume = (Math.abs(endX-startX)) * (Math.abs(endY-startY));
 
     public TropicalGarden() {
 
     }
+
+
 
     public class Tree {
 
@@ -150,4 +154,33 @@ public class TropicalGarden {
         }
     }
 
+    public void setEndX(double endX) {
+        this.endX = endX;
+    }
+    public void setEndY(double endY) {
+        this.endY = endY;
+    }
+
+    public void setStartX(double startX) {
+        this.startX = startX;
+    }
+    public void setStartY(double startY) {
+        this.startY = startY;
+    }
+
+    public double getStartX() {
+        return startX;
+    }
+
+    public double getStartY() {
+        return startY;
+    }
+
+    public double getEndX() {
+        return endX;
+    }
+
+    public double getEndY() {
+        return endY;
+    }
 }

@@ -13,52 +13,52 @@ public class Locator {
     }
 
     //VARIABLES OF PLACES
-    public static double roomXCoordinate;
-    public static double roomYCoordinate;
+    private double roomXCoordinate;
+    private double roomYCoordinate;
 
-    public static double orchestraAnsambleStartXCoordinate;
-    public static double orchestraAnsambleStartYCoordinate;
-    public static double orchestraAnsambleEndXCoordinate;
-    public static double orchestraAnsambleEndYCoordinate;
+    private double orchestraAnsambleStartXCoordinate;
+    private double orchestraAnsambleStartYCoordinate;
+    private double orchestraAnsambleEndXCoordinate;
+    private double orchestraAnsambleEndYCoordinate;
 
-    public static double orchestraAnsambleViolinStartXCoordinate;
-    public static double orchestraAnsambleViolinStartYCoordinate;
-    public static double orchestraAnsambleViolinEndXCoordinate;
-    public static double orchestraAnsambleViolinEndYCoordinate;
+    private double orchestraAnsambleViolinStartXCoordinate;
+    private double orchestraAnsambleViolinStartYCoordinate;
+    private double orchestraAnsambleViolinEndXCoordinate;
+    private double orchestraAnsambleViolinEndYCoordinate;
 
-    public static double orchestraAnsambleOtherStartXCoordinate;
-    public static double orchestraAnsambleOtherStartYCoordinate;
-    public static double orchestraAnsambleOtherEndXCoordinate;
-    public static double orchestraAnsambleOtherEndYCoordinate;
+    private double orchestraAnsambleOtherStartXCoordinate;
+    private double orchestraAnsambleOtherStartYCoordinate;
+    private double orchestraAnsambleOtherEndXCoordinate;
+    private double orchestraAnsambleOtherEndYCoordinate;
 
-    public static double wallXCoordinate;
-    public static double wallYCoordinate;
+    private double wallXCoordinate;
+    private double wallYCoordinate;
 
-    public static double fakeEnvironmentXStartCoordinate;
-    public static double fakeEnvironmentXEndCoordinate;
-    public static double fakeEnvironmentYStartCoordinate;
-    public static double fakeEnvironmentYEndCoordinate;
+    private double fakeEnvironmentXStartCoordinate;
+    private double fakeEnvironmentXEndCoordinate;
+    private double fakeEnvironmentYStartCoordinate;
+    private double fakeEnvironmentYEndCoordinate;
 
 
     // CAN CHANGE
-    public static double heroMargaritaXCoordinate;
-    public static double heroMargaritaYCoordinate;
+    private double heroMargaritaXCoordinate;
+    private double heroMargaritaYCoordinate;
 
-    public static double heroBegemotXCoordinate;
-    public static double heroBegemotYCoordinate;
-    public static double heroKorovyevXCoordinate;
-    public static double heroKorovyevYCoordinate;
+    private double heroBegemotXCoordinate;
+    private double heroBegemotYCoordinate;
+    private double heroKorovyevXCoordinate;
+    private double heroKorovyevYCoordinate;
 
 // END OF CAN CHANGE
 
-    public static double npcConductorXCoordinate;
-    public static double npcConductorYCoordinate;
+    private double npcConductorXCoordinate;
+    private double npcConductorYCoordinate;
 
-    public static double npcVietanXCoordinate;
-    public static double npcVietanYCoordinate;
+    private double npcVietanXCoordinate;
+    private double npcVietanYCoordinate;
 
-    public static double npcFrachnikXCoordinate;
-    public static double npcFrachnikYCoordinate;
+    private double npcFrachnikXCoordinate;
+    private double npcFrachnikYCoordinate;
 
 
 
@@ -101,5 +101,261 @@ public class Locator {
         fakeEnvironmentXEndCoordinate = roomXCoordinate;
         fakeEnvironmentYStartCoordinate = orchestraAnsambleEndYCoordinate;
         fakeEnvironmentYEndCoordinate = roomYCoordinate;
+    }
+
+    public double getRoomXCoordinate() {
+        return roomXCoordinate;
+    }
+
+    public double getRoomYCoordinate() {
+        return roomYCoordinate;
+    }
+
+    public double getOrchestraAnsambleStartXCoordinate() {
+        return orchestraAnsambleStartXCoordinate;
+    }
+
+    public double getOrchestraAnsambleStartYCoordinate() {
+        return orchestraAnsambleStartYCoordinate;
+    }
+
+    public double getOrchestraAnsambleEndXCoordinate() {
+        return orchestraAnsambleEndXCoordinate;
+    }
+
+    public double getOrchestraAnsambleEndYCoordinate() {
+        return orchestraAnsambleEndYCoordinate;
+    }
+
+    public double getOrchestraAnsambleViolinStartXCoordinate() {
+        return orchestraAnsambleViolinStartXCoordinate;
+    }
+
+    public double getOrchestraAnsambleViolinStartYCoordinate() {
+        return orchestraAnsambleViolinStartYCoordinate;
+    }
+
+    public double getOrchestraAnsambleViolinEndXCoordinate() {
+        return orchestraAnsambleViolinEndXCoordinate;
+    }
+
+    public double getOrchestraAnsambleViolinEndYCoordinate() {
+        return orchestraAnsambleViolinEndYCoordinate;
+    }
+
+    public double getOrchestraAnsambleOtherStartXCoordinate() {
+        return orchestraAnsambleOtherStartXCoordinate;
+    }
+
+    public double getOrchestraAnsambleOtherStartYCoordinate() {
+        return orchestraAnsambleOtherStartYCoordinate;
+    }
+
+    public double getOrchestraAnsambleOtherEndXCoordinate() {
+        return orchestraAnsambleOtherEndXCoordinate;
+    }
+
+    public double getOrchestraAnsambleOtherEndYCoordinate() {
+        return orchestraAnsambleOtherEndYCoordinate;
+    }
+
+    public double getWallXCoordinate() {
+        return wallXCoordinate;
+    }
+
+    public double getWallYCoordinate() {
+        return wallYCoordinate;
+    }
+
+    public double getFakeEnvironmentXStartCoordinate() {
+        return fakeEnvironmentXStartCoordinate;
+    }
+
+    public double getFakeEnvironmentXEndCoordinate() {
+        return fakeEnvironmentXEndCoordinate;
+    }
+
+    public double getFakeEnvironmentYStartCoordinate() {
+        return fakeEnvironmentYStartCoordinate;
+    }
+
+    public double getFakeEnvironmentYEndCoordinate() {
+        return fakeEnvironmentYEndCoordinate;
+    }
+
+    public double getHeroMargaritaXCoordinate() {
+        return heroMargaritaXCoordinate;
+    }
+
+    public double getHeroMargaritaYCoordinate() {
+        return heroMargaritaYCoordinate;
+    }
+
+    public double getHeroBegemotXCoordinate() {
+        return heroBegemotXCoordinate;
+    }
+
+    public double getHeroBegemotYCoordinate() {
+        return heroBegemotYCoordinate;
+    }
+
+    public double getHeroKorovyevXCoordinate() {
+        return heroKorovyevXCoordinate;
+    }
+
+    public double getHeroKorovyevYCoordinate() {
+        return heroKorovyevYCoordinate;
+    }
+
+    public double getNpcConductorXCoordinate() {
+        return npcConductorXCoordinate;
+    }
+
+    public double getNpcConductorYCoordinate() {
+        return npcConductorYCoordinate;
+    }
+
+    public double getNpcVietanXCoordinate() {
+        return npcVietanXCoordinate;
+    }
+
+    public double getNpcVietanYCoordinate() {
+        return npcVietanYCoordinate;
+    }
+
+    public double getNpcFrachnikXCoordinate() {
+        return npcFrachnikXCoordinate;
+    }
+
+    public double getNpcFrachnikYCoordinate() {
+        return npcFrachnikYCoordinate;
+    }
+
+    public void setRoomXCoordinate(double roomXCoordinate) {
+        this.roomXCoordinate = roomXCoordinate;
+    }
+
+    public void setRoomYCoordinate(double roomYCoordinate) {
+        this.roomYCoordinate = roomYCoordinate;
+    }
+
+    public void setOrchestraAnsambleStartXCoordinate(double orchestraAnsambleStartXCoordinate) {
+        this.orchestraAnsambleStartXCoordinate = orchestraAnsambleStartXCoordinate;
+    }
+
+    public void setOrchestraAnsambleStartYCoordinate(double orchestraAnsambleStartYCoordinate) {
+        this.orchestraAnsambleStartYCoordinate = orchestraAnsambleStartYCoordinate;
+    }
+
+    public void setOrchestraAnsambleEndXCoordinate(double orchestraAnsambleEndXCoordinate) {
+        this.orchestraAnsambleEndXCoordinate = orchestraAnsambleEndXCoordinate;
+    }
+
+    public void setOrchestraAnsambleEndYCoordinate(double orchestraAnsambleEndYCoordinate) {
+        this.orchestraAnsambleEndYCoordinate = orchestraAnsambleEndYCoordinate;
+    }
+
+    public void setOrchestraAnsambleViolinStartXCoordinate(double orchestraAnsambleViolinStartXCoordinate) {
+        this.orchestraAnsambleViolinStartXCoordinate = orchestraAnsambleViolinStartXCoordinate;
+    }
+
+    public void setOrchestraAnsambleViolinStartYCoordinate(double orchestraAnsambleViolinStartYCoordinate) {
+        this.orchestraAnsambleViolinStartYCoordinate = orchestraAnsambleViolinStartYCoordinate;
+    }
+
+    public void setOrchestraAnsambleViolinEndXCoordinate(double orchestraAnsambleViolinEndXCoordinate) {
+        this.orchestraAnsambleViolinEndXCoordinate = orchestraAnsambleViolinEndXCoordinate;
+    }
+
+    public void setOrchestraAnsambleViolinEndYCoordinate(double orchestraAnsambleViolinEndYCoordinate) {
+        this.orchestraAnsambleViolinEndYCoordinate = orchestraAnsambleViolinEndYCoordinate;
+    }
+
+    public void setOrchestraAnsambleOtherStartXCoordinate(double orchestraAnsambleOtherStartXCoordinate) {
+        this.orchestraAnsambleOtherStartXCoordinate = orchestraAnsambleOtherStartXCoordinate;
+    }
+
+    public void setOrchestraAnsambleOtherStartYCoordinate(double orchestraAnsambleOtherStartYCoordinate) {
+        this.orchestraAnsambleOtherStartYCoordinate = orchestraAnsambleOtherStartYCoordinate;
+    }
+
+    public void setOrchestraAnsambleOtherEndXCoordinate(double orchestraAnsambleOtherEndXCoordinate) {
+        this.orchestraAnsambleOtherEndXCoordinate = orchestraAnsambleOtherEndXCoordinate;
+    }
+
+    public void setOrchestraAnsambleOtherEndYCoordinate(double orchestraAnsambleOtherEndYCoordinate) {
+        this.orchestraAnsambleOtherEndYCoordinate = orchestraAnsambleOtherEndYCoordinate;
+    }
+
+    public void setWallXCoordinate(double wallXCoordinate) {
+        this.wallXCoordinate = wallXCoordinate;
+    }
+
+    public void setWallYCoordinate(double wallYCoordinate) {
+        this.wallYCoordinate = wallYCoordinate;
+    }
+
+    public void setFakeEnvironmentXStartCoordinate(double fakeEnvironmentXStartCoordinate) {
+        this.fakeEnvironmentXStartCoordinate = fakeEnvironmentXStartCoordinate;
+    }
+
+    public void setFakeEnvironmentXEndCoordinate(double fakeEnvironmentXEndCoordinate) {
+        this.fakeEnvironmentXEndCoordinate = fakeEnvironmentXEndCoordinate;
+    }
+
+    public void setFakeEnvironmentYStartCoordinate(double fakeEnvironmentYStartCoordinate) {
+        this.fakeEnvironmentYStartCoordinate = fakeEnvironmentYStartCoordinate;
+    }
+
+    public void setFakeEnvironmentYEndCoordinate(double fakeEnvironmentYEndCoordinate) {
+        this.fakeEnvironmentYEndCoordinate = fakeEnvironmentYEndCoordinate;
+    }
+
+    public void setHeroMargaritaXCoordinate(double heroMargaritaXCoordinate) {
+        this.heroMargaritaXCoordinate = heroMargaritaXCoordinate;
+    }
+
+    public void setHeroMargaritaYCoordinate(double heroMargaritaYCoordinate) {
+        this.heroMargaritaYCoordinate = heroMargaritaYCoordinate;
+    }
+
+    public void setHeroBegemotXCoordinate(double heroBegemotXCoordinate) {
+        this.heroBegemotXCoordinate = heroBegemotXCoordinate;
+    }
+
+    public void setHeroBegemotYCoordinate(double heroBegemotYCoordinate) {
+        this.heroBegemotYCoordinate = heroBegemotYCoordinate;
+    }
+
+    public void setHeroKorovyevXCoordinate(double heroKorovyevXCoordinate) {
+        this.heroKorovyevXCoordinate = heroKorovyevXCoordinate;
+    }
+
+    public void setHeroKorovyevYCoordinate(double heroKorovyevYCoordinate) {
+        this.heroKorovyevYCoordinate = heroKorovyevYCoordinate;
+    }
+
+    public void setNpcConductorXCoordinate(double npcConductorXCoordinate) {
+        this.npcConductorXCoordinate = npcConductorXCoordinate;
+    }
+
+    public void setNpcConductorYCoordinate(double npcConductorYCoordinate) {
+        this.npcConductorYCoordinate = npcConductorYCoordinate;
+    }
+
+    public void setNpcVietanXCoordinate(double npcVietanXCoordinate) {
+        this.npcVietanXCoordinate = npcVietanXCoordinate;
+    }
+
+    public void setNpcVietanYCoordinate(double npcVietanYCoordinate) {
+        this.npcVietanYCoordinate = npcVietanYCoordinate;
+    }
+
+    public void setNpcFrachnikXCoordinate(double npcFrachnikXCoordinate) {
+        this.npcFrachnikXCoordinate = npcFrachnikXCoordinate;
+    }
+
+    public void setNpcFrachnikYCoordinate(double npcFrachnikYCoordinate) {
+        this.npcFrachnikYCoordinate = npcFrachnikYCoordinate;
     }
 }

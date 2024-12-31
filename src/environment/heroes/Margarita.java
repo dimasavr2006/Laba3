@@ -15,13 +15,15 @@ public class Margarita extends Human {
     double age = 33;
     String name = "Маргарита";
 
+    Locator locator = new Locator();
+
     public static final double height = 165;
 
     public Margarita() throws WallHeightException, WallIsAlreadyExistsException {
         super();
 
-        xCoord = Locator.heroMargaritaXCoordinate;
-        yCoord = Locator.heroMargaritaYCoordinate;
+        setXCoord(locator.getHeroMargaritaXCoordinate());
+        setYCoord(locator.getHeroMargaritaYCoordinate());
 
         try {
             if (wall.getWallRandomHeightEnd() < height) {
@@ -55,7 +57,8 @@ public class Margarita extends Human {
 
     @Override
     public void moveHero(double moveOnXAxis, double moveOnYAxis) {
-        xCoord+=moveOnXAxis;
-        yCoord+=moveOnYAxis;
+        setXCoord(locator.getHeroMargaritaXCoordinate() + moveOnXAxis);
+        setYCoord(locator.getHeroMargaritaYCoordinate() + moveOnYAxis);
     }
+
 }

@@ -18,8 +18,8 @@ public abstract class Human {
 
     public static final double height = 180;
 
-    public static double xCoord;
-    public static double yCoord;
+    private double xCoord;
+    private double yCoord;
 
     public Arm rArm;
     public Arm lArm;
@@ -55,6 +55,14 @@ public abstract class Human {
 
     public Gender getGender() {
         return gender;
+    }
+
+    public double getXCoord() {
+        return xCoord;
+    }
+
+    public double getYCoord() {
+        return yCoord;
     }
 
     public Human(Gender gender, double age, String name) {
@@ -235,6 +243,14 @@ public abstract class Human {
 
     }
 
+    public void setXCoord(double xCoord) {
+        this.xCoord = xCoord;
+    }
+
+    public void setYCoord(double yCoord) {
+        this.yCoord = yCoord;
+    }
+
     public final class Leg{
         boolean isIn = true;
         final OrientationOfPart orientation;
@@ -248,12 +264,12 @@ public abstract class Human {
         final OrientationOfPart orientation;
         TypeOfBodyPart typeOfBodyPart = TypeOfBodyPart.ARM;
 
-        public double coordX;
-        public double coordY;
+        private double coordX;
+        private double coordY;
 
-        public double angleOnBody;
+        private double angleOnBody;
 
-        public double handAngleOnArm;
+        private double handAngleOnArm;
 
         public final ArrayList<Object> inHand = new ArrayList<>();
 
