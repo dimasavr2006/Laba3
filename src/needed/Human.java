@@ -15,8 +15,7 @@ public abstract class Human {
     private final double age;
     private String name;
     private double earHP = 100;
-
-    public static final double height = 180;
+    private double height = 180;
 
     private double xCoord;
     private double yCoord;
@@ -63,6 +62,18 @@ public abstract class Human {
 
     public double getYCoord() {
         return yCoord;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getAge() {
+        return age;
     }
 
     public Human(Gender gender, double age, String name) {

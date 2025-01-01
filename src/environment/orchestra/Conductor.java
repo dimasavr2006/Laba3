@@ -53,8 +53,14 @@ public class Conductor extends Musician implements MakeToPlay{
     public void makeToPlay(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException, NotMovingArmsException {
 
         OrchestraAll orchestraAll = new OrchestraAll();
-        Musician[][] partViolin = orchestraAll.violinPartOfOrchestra.violinsAll;
-        Musician[][] partTrumpet = orchestraAll.trumpetPartOfOrchestra.trumpetsAll;
+//        Musician[][] partViolin = orchestraAll.violinPartOfOrchestra.violinsAll;
+//        Musician[][] partTrumpet = orchestraAll.trumpetPartOfOrchestra.trumpetsAll;
+
+        Musician[][] partViolin = orchestraAll.getViolinPartOfOrchestra().violinsAll;
+        Musician[][] partTrumpet = orchestraAll.getTrumpetPartOfOrchestra().trumpetsAll;
+
+        // разобраться что делать тут, возможно придётся снова всё пеерписывать
+
 
         checkIsPlayingAndTurnToAnotherCondition(orchestraAll.violinPartOfOrchestra.violinsAll, true, isNeededToMoveArms);
         checkIsPlayingAndTurnToAnotherCondition(orchestraAll.trumpetPartOfOrchestra.trumpetsAll, true, isNeededToMoveArms);

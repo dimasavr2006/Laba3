@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class OrchestraAll {
 
-    public ViolinPartOfOrchestra violinPartOfOrchestra;
-    public TrumpetPartOfOrchestra trumpetPartOfOrchestra;
+    private ViolinPartOfOrchestra violinPartOfOrchestra;
+    private TrumpetPartOfOrchestra trumpetPartOfOrchestra;
 
     public OrchestraAll() throws SomeoneInOrchestraIsSickException {
 
@@ -65,5 +65,20 @@ public class OrchestraAll {
         }
     }
 
+    public ViolinPartOfOrchestra getViolinPartOfOrchestra() {
+        return violinPartOfOrchestra;
+    }
+
+    public void setViolinPartOfOrchestra(ViolinPartOfOrchestra violinPartOfOrchestra) {
+        this.violinPartOfOrchestra = violinPartOfOrchestra;
+    }
+
+    public TrumpetPartOfOrchestra getTrumpetPartOfOrchestra() {
+        return trumpetPartOfOrchestra;
+    }
+
+    public void setTrumpetPartOfOrchestra(TrumpetPartOfOrchestra trumpetPartOfOrchestra) {
+        this.trumpetPartOfOrchestra = trumpetPartOfOrchestra;
+    }
 }
 
