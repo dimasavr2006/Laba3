@@ -1,8 +1,8 @@
 package needed.instruments;
 
-import needed.interfaces.MakeSound;
+import needed.interfaces.ProduceSound;
 
-public class Trumpet implements MakeSound {
+public class Trumpet implements ProduceSound {
 
     private double weight;
     private double efficiency;
@@ -17,7 +17,7 @@ public class Trumpet implements MakeSound {
     }
 
     public void playSmth(){
-        makeSound(sound);
+        produceSound(sound);
     }
 
     public double getWeight() {

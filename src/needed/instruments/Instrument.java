@@ -1,8 +1,8 @@
 package needed.instruments;
 
-import needed.interfaces.MakeSound;
+import needed.interfaces.ProduceSound;
 
-public abstract class Instrument implements MakeSound {
+public abstract class Instrument implements ProduceSound {
 
     private double weight;
     private double efficiency;
@@ -15,7 +15,7 @@ public abstract class Instrument implements MakeSound {
     }
 
     public void playMelody(){
-        makeSound(defaultSound);
+        produceSound(defaultSound);
     }
 
     public double getWeight() {

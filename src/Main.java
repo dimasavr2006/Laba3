@@ -1,12 +1,19 @@
 import exceptions.*;
 import location.Locator;
 import needed.ActionMaker;
+import needed.HeroesGenerator;
+import needed.Human;
 
-public static void main(String[] args) throws WrongArmPositionException, WrongHeadNodAngleException, WallIsAlreadyExistsException, SomeoneInOrchestraIsSickException, BecomeDeafException, SomeoneIsPlayingException, NotMovingArmsException, WallHeightException, WrongHeadAngleException {
-    Locator locator = new Locator();
-    locator.mainGeneratorOfPlace();
-    ActionMaker actionMaker = new ActionMaker();
-    actionMaker.starter();
+public static void main(String[] args) throws WrongArmPositionException, WrongHeadNodAngleException, WallIsAlreadyExistsException, SomeoneInOrchestraIsSickException, BecomeDeafException, SomeoneIsPlayingException, NotMovingArmsException, WallHeightException, WrongHeadAngleException, MusicianIsTooWeakException {
+
+//        Locator locator = new Locator();
+//
+//        locator.mainGeneratorOfPlace();
+//
+//        ActionMaker actionMaker = new ActionMaker();
+//        actionMaker.starter();
+
+        ActionMaker.staticStarter();
 
     /*
     поправить солид (модификаторы доступа)
@@ -18,6 +25,9 @@ public static void main(String[] args) throws WrongArmPositionException, WrongHe
     развернуть в 3д
 
     действие с музыкальными инструментами (взять в руку и тд. хватание трубы и тд, интерфейс )
+
+    небольшой огрех: инструмент появляется вместе с музыкантом, но берёт он его не сразу
+
     */
 
-}
+    }

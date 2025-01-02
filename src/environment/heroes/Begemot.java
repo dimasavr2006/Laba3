@@ -11,7 +11,9 @@ public class Begemot extends Human {
     double age = 25;
     String name = "Бегемот";
 
-    Locator locator = new Locator();
+    static Locator locator = ActionMaker.locator;
+
+    private static TropicalGarden tropicalGarden = new TropicalGarden();
 
     public Begemot() {
         super();
@@ -21,10 +23,8 @@ public class Begemot extends Human {
 
     }
 
-    public void fakeEnvironmentCreator(){
-
-        TropicalGarden tropicalGarden = new TropicalGarden();
-
+    public static TropicalGarden getTropicalGarden() {
+        return tropicalGarden;
     }
 
     @Override

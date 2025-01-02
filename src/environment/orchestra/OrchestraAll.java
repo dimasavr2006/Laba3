@@ -2,10 +2,14 @@ package environment.orchestra;
 
 import exceptions.DuplicateNameInOrchestraException;
 import exceptions.SomeoneInOrchestraIsSickException;
+import location.Locator;
+import needed.ActionMaker;
 
 import java.util.ArrayList;
 
 public class OrchestraAll {
+
+    static Locator locator = ActionMaker.locator;
 
     private ViolinPartOfOrchestra violinPartOfOrchestra;
     private TrumpetPartOfOrchestra trumpetPartOfOrchestra;

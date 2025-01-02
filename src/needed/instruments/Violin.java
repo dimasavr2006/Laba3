@@ -1,8 +1,8 @@
 package needed.instruments;
 
-import needed.interfaces.MakeSound;
+import needed.interfaces.ProduceSound;
 
-public class Violin extends Instrument implements MakeSound {
+public class Violin extends Instrument implements ProduceSound {
 
     private String sound = "Пу-пу-пу-у-у-у-у-у-у";
 

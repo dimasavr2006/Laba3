@@ -6,11 +6,12 @@ import needed.*;
 import needed.instruments.Bow;
 import needed.instruments.Trumpet;
 import needed.instruments.Violin;
+import needed.interfaces.PlayInstrument;
 import needed.utils.gens.*;
 
 import java.util.Random;
 
-public class Musician extends Human{
+public class Musician extends Human implements PlayInstrument {
 
     final InstrumentType instrumentType;
     boolean isPlaying = false;
@@ -67,8 +68,8 @@ public class Musician extends Human{
 
                 lArm.setAngleOnBody(45);
                 rArm.setAngleOnBody(45);
-                lArm.inHand.add(violin);
-                rArm.inHand.add(bow);
+                lArm.putObjectInHand(violin);
+                rArm.putObjectInHand(bow);
                 lArm.setAngleOnBody(90);
                 rArm.setAngleOnBody(90);
                 lArm.setHandAngleOnArm(90);
@@ -78,8 +79,8 @@ public class Musician extends Human{
 
                 lArm.setAngleOnBody(45);
                 rArm.setAngleOnBody(45);
-                lArm.inHand.add(trumpet);
-                rArm.inHand.add(trumpet);
+                lArm.putObjectInHand(trumpet);
+                rArm.putObjectInHand(trumpet);
                 lArm.setAngleOnBody(90);
                 rArm.setAngleOnBody(lArm.getAngleOnBody());
                 lArm.setHandAngleOnArm(90);
@@ -116,6 +117,18 @@ public class Musician extends Human{
                 lArm.setAngleOnBody(rArm.getAngleOnBody());
             }
         }
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
+    }
+
+    public boolean isHealthy() {
+        return isHealthy;
     }
 
     @Override

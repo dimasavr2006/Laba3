@@ -3,6 +3,7 @@ package environment.orchestra;
 import enums.*;
 import exceptions.*;
 import location.Locator;
+import needed.ActionMaker;
 import needed.interfaces.*;
 
 // DIRIZHER ESLI CHTO
@@ -10,9 +11,14 @@ public class Conductor extends Musician implements MakeToPlay{
 
     final String name;
 
-    Locator locator = new Locator();
+    static Locator locator = ActionMaker.locator;
 
     final Stick whiteStick = new Stick(5, Colours.WHITE);
+
+    static OrchestraAll orchestraAll = ActionMaker.getOrchestraAll();
+
+    ViolinPartOfOrchestra localViolins = orchestraAll.getViolinPartOfOrchestra();
+    TrumpetPartOfOrchestra localTrumpets = orchestraAll.getTrumpetPartOfOrchestra();
 
     public Conductor(InstrumentType instrumentType){
         super(InstrumentType.NOINSTRUMENT);
@@ -50,30 +56,14 @@ public class Conductor extends Musician implements MakeToPlay{
     }
 
     @Override
-    public void makeToPlay(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException, NotMovingArmsException {
-
-        OrchestraAll orchestraAll = new OrchestraAll();
-//        Musician[][] partViolin = orchestraAll.violinPartOfOrchestra.violinsAll;
-//        Musician[][] partTrumpet = orchestraAll.trumpetPartOfOrchestra.trumpetsAll;
-
-        Musician[][] partViolin = orchestraAll.getViolinPartOfOrchestra().violinsAll;
-        Musician[][] partTrumpet = orchestraAll.getTrumpetPartOfOrchestra().trumpetsAll;
-
-        // разобраться что делать тут, возможно придётся снова всё пеерписывать
-
-
-        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.violinPartOfOrchestra.violinsAll, true, isNeededToMoveArms);
-        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.trumpetPartOfOrchestra.trumpetsAll, true, isNeededToMoveArms);
+    public void makeToPlay(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException, MusicianIsTooWeakException {
+        checkIsPlayingAndTurnToAnotherCondition(localViolins.violinsAll, true, isNeededToMoveArms);
+        checkIsPlayingAndTurnToAnotherCondition(localTrumpets.trumpetsAll, true, isNeededToMoveArms);
     }
 
-    public void makeStopPlaying() throws SomeoneIsPlayingException, SomeoneInOrchestraIsSickException, NotMovingArmsException {
-
-        OrchestraAll orchestraAll = new OrchestraAll();
-        Musician[][] partViolin = orchestraAll.violinPartOfOrchestra.violinsAll;
-        Musician[][] partTrumpet = orchestraAll.trumpetPartOfOrchestra.trumpetsAll;
-
-        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.trumpetPartOfOrchestra.trumpetsAll, false, false);
-        checkIsPlayingAndTurnToAnotherCondition(orchestraAll.violinPartOfOrchestra.violinsAll, false, false);
+    public void makeStopPlaying(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException, MusicianIsTooWeakException {
+        checkIsPlayingAndTurnToAnotherCondition(localTrumpets.trumpetsAll, false, isNeededToMoveArms);
+        checkIsPlayingAndTurnToAnotherCondition(localViolins.violinsAll, false, isNeededToMoveArms);
         stickFollowing();
     }
 
@@ -81,7 +71,7 @@ public class Conductor extends Musician implements MakeToPlay{
         whiteStick.setAngle(this.rArm.getHandAngleOnArm());
     }
 
-    private void checkIsPlayingAndTurnToAnotherCondition(Musician[][] partOfOrchestra, boolean checkingCondition, boolean needToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException {
+    private void checkIsPlayingAndTurnToAnotherCondition(Musician[][] partOfOrchestra, boolean checkingCondition, boolean needToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException, MusicianIsTooWeakException {
 
         if (needToMoveArms){
             armsMover();
@@ -95,6 +85,10 @@ public class Conductor extends Musician implements MakeToPlay{
                         case false -> throw new SomeoneIsPlayingException("Кто-то уже играет!!!");
                     }
                 }
+                if (checkingCondition){
+                    musician.play(musician);
+                }
+
                 musician.isPlaying = checkingCondition;
             }
         }

@@ -22,4 +22,20 @@ public class HeroesGenerator {
 
         this.korovyev = new Korovyev();
     }
+
+    public Margarita getMargarita() {
+        return margarita;
+    }
+
+    public Begemot getBegemot() {
+        return begemot;
+    }
+
+    public Frachnik[] getFrachniks() {
+        return frachniks;
+    }
+
+    public Korovyev getKorovyev() {
+        return korovyev;
+    }
 }

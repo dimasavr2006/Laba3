@@ -2,6 +2,7 @@ package environment.fakeEnvironment;
 
 import exceptions.TreeDestroyingException;
 import location.Locator;
+import needed.ActionMaker;
 import needed.Human;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class TropicalGarden {
 
     final Random random = new Random();
 
-    Locator locator = new Locator();
+    static Locator locator = ActionMaker.locator;
 
     public final Tree tree = new Tree(5, 0.8);
     public final Branch.Liana liana = new Branch.Liana();

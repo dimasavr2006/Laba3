@@ -10,7 +10,7 @@ public class Korovyev extends Human {
     double age = 43;
     String name = "Мрачный рыцарь";
 
-    Locator locator = new Locator();
+    static Locator locator = ActionMaker.locator;
 
     public Korovyev() {
         super();

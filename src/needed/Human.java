@@ -262,6 +262,7 @@ public abstract class Human {
         this.yCoord = yCoord;
     }
 
+
     public final class Leg{
         boolean isIn = true;
         final OrientationOfPart orientation;
@@ -300,6 +301,11 @@ public abstract class Human {
                 coordX = 1;
             }
 
+        }
+
+        public void putObjectInHand(Object object){
+            inHand.clear();
+            inHand.add(object);
         }
 
         public double getCoordX() {

@@ -3,6 +3,7 @@ package environment.orchestra;
 import enums.InstrumentType;
 import exceptions.SomeoneInOrchestraIsSickException;
 import location.Locator;
+import needed.ActionMaker;
 
 public class ViolinPartOfOrchestra{
 
@@ -14,9 +15,9 @@ public class ViolinPartOfOrchestra{
 
     public final Musician[][] violinsAll;
 
-    Locator locator = new Locator();
+    static Locator locator = ActionMaker.locator;
 
-    public ViolinPartOfOrchestra() {
+    public ViolinPartOfOrchestra() throws SomeoneInOrchestraIsSickException {
 
         this.lenght = Math.abs(locator.getOrchestraAnsambleViolinStartXCoordinate() - locator.getOrchestraAnsambleViolinEndXCoordinate());
         this.height = Math.abs(locator.getOrchestraAnsambleViolinStartYCoordinate() - locator.getOrchestraAnsambleViolinEndYCoordinate());
@@ -25,6 +26,8 @@ public class ViolinPartOfOrchestra{
         this.numberOfMusiciansInColumn = (int) height / 10;
 
         this.violinsAll = new Musician[numberOfMusiciansInRow][numberOfMusiciansInColumn];
+
+        creatorOfPart();
     }
 
     public void creatorOfPart() throws SomeoneInOrchestraIsSickException {

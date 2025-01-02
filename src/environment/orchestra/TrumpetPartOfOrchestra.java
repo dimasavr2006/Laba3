@@ -3,6 +3,7 @@ package environment.orchestra;
 import enums.InstrumentType;
 import exceptions.SomeoneInOrchestraIsSickException;
 import location.Locator;
+import needed.ActionMaker;
 
 public class TrumpetPartOfOrchestra{
 
@@ -14,7 +15,7 @@ public class TrumpetPartOfOrchestra{
 
     public final Musician[][] trumpetsAll;
 
-    Locator locator = new Locator();
+    static Locator locator = ActionMaker.locator;
 
     public TrumpetPartOfOrchestra() throws SomeoneInOrchestraIsSickException {
 
