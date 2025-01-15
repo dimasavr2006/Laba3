@@ -1,10 +1,7 @@
 import exceptions.*;
-import location.Locator;
 import needed.ActionMaker;
-import needed.HeroesGenerator;
-import needed.Human;
 
-public static void main(String[] args) throws WrongArmPositionException, WrongHeadNodAngleException, WallIsAlreadyExistsException, SomeoneInOrchestraIsSickException, BecomeDeafException, SomeoneIsPlayingException, NotMovingArmsException, WallHeightException, WrongHeadAngleException, MusicianIsTooWeakException {
+public static void main(String[] args) throws WrongArmPositionException, WrongHeadNodAngleException, WallIsAlreadyExistsException, BecomeDeafException, SomeoneIsPlayingException, NotMovingArmsException, WallHeightException, WrongHeadAngleException, MusicianIsTooWeakException {
 
 //        Locator locator = new Locator();
 //
@@ -13,7 +10,7 @@ public static void main(String[] args) throws WrongArmPositionException, WrongHe
 //        ActionMaker actionMaker = new ActionMaker();
 //        actionMaker.starter();
 
-        ActionMaker.staticStarter();
+    ActionMaker.staticStarter();
 
     /*
     поправить солид (модификаторы доступа)

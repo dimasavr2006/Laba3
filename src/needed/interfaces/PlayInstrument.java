@@ -6,7 +6,7 @@ import needed.instruments.Instrument;
 
 public interface PlayInstrument {
 
-    public default void play(Musician musician) throws MusicianIsTooWeakException {
+    default void play(Musician musician) throws MusicianIsTooWeakException {
 
         Instrument instrumentL = (Instrument) musician.lArm.inHand.getFirst();
 

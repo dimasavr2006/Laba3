@@ -39,7 +39,7 @@ public class OrchestraAll {
             }
         }
 
-        namesViolinChecker(namesViolin);
+        namesPartChecker(namesViolin);
 
         for (int i = 0; i < trumpetPartOfOrchestra.trumpetsAll.length; i++) {
             for (int j = 0; j < trumpetPartOfOrchestra.trumpetsAll[i].length; j++){
@@ -47,7 +47,7 @@ public class OrchestraAll {
             }
         }
 
-        namesViolinChecker(namesTrumpet);
+        namesPartChecker(namesTrumpet);
 
         for (String s1 : namesViolin) {
             for (String s2 : namesTrumpet) {
@@ -59,7 +59,7 @@ public class OrchestraAll {
 
     }
 
-    private void namesViolinChecker(ArrayList<String> name) {
+    private void namesPartChecker(ArrayList<String> name) {
         for (int i = 0; i < name.size(); i++) {
             for (int j = i + 1; j < name.size(); j++) {
                 if (name.get(i).equals(name.get(j))) {
@@ -73,16 +73,10 @@ public class OrchestraAll {
         return violinPartOfOrchestra;
     }
 
-    public void setViolinPartOfOrchestra(ViolinPartOfOrchestra violinPartOfOrchestra) {
-        this.violinPartOfOrchestra = violinPartOfOrchestra;
-    }
 
     public TrumpetPartOfOrchestra getTrumpetPartOfOrchestra() {
         return trumpetPartOfOrchestra;
     }
 
-    public void setTrumpetPartOfOrchestra(TrumpetPartOfOrchestra trumpetPartOfOrchestra) {
-        this.trumpetPartOfOrchestra = trumpetPartOfOrchestra;
-    }
 }
 

@@ -20,6 +20,10 @@ public class HeroesGenerator {
         this.frachniks[0] = new Frachnik();
         this.frachniks[1] = new Frachnik();
 
+        if (frachniks[0] == frachniks[1]) {
+            throw new IdenticFrachnikException("Фрачники одинаковы");
+        }
+
         this.korovyev = new Korovyev();
     }
 

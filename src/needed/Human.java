@@ -36,9 +36,6 @@ public abstract class Human {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void setEarHP(double earHP) {
         this.earHP = earHP;
@@ -76,6 +73,8 @@ public abstract class Human {
         return age;
     }
 
+
+
     public Human(Gender gender, double age, String name) {
         this.gender = gender;
         this.age = age;
@@ -95,6 +94,10 @@ public abstract class Human {
         this.head = new Head();
         this.bottom = new Bottom();
 
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public void turnBody(Human human, double degrees) {

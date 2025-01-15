@@ -23,7 +23,7 @@ public class Margarita extends Human {
         setXCoord(locator.getHeroMargaritaXCoordinate());
         setYCoord(locator.getHeroMargaritaYCoordinate());
 
-        double height = 165;
+        double height = 5000;
 
         try {
             if (wall.getWallRandomHeightEnd() < height) {

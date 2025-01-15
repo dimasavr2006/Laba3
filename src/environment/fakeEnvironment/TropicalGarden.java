@@ -150,6 +150,7 @@ public class TropicalGarden {
     }
 
     public void branchesCreator(){
+
         for (int i = 0; i < countOfBranches; i++) {
             branches[i] = new Branch(random.nextDouble());
         }

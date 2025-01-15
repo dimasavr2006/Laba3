@@ -16,7 +16,7 @@ public class WallWrongInputHeightException extends RuntimeException {
 
     private String returner(){
         String toReturn;
-        toReturn = "Максимальная высота стены: " + random + ", а рост маргариты: " + height + "что некорректно";
+        toReturn = "Максимальная высота стены: " + random + ", а рост маргариты: " + height + " что некорректно";
         return toReturn;
     }
 

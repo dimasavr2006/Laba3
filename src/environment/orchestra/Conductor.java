@@ -9,7 +9,7 @@ import needed.interfaces.*;
 // DIRIZHER ESLI CHTO
 public class Conductor extends Musician implements MakeToPlay{
 
-    final String name;
+    String name = "Иоганн Штраус";
 
     static Locator locator = ActionMaker.locator;
 

@@ -11,6 +11,9 @@ public class NameGen{
 
     // Метод для получения случайного имени из файла
     public static String getRandomNameFromFile(String filePath) {
+
+        Random random = new Random();
+
         List<String> names = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -25,7 +28,7 @@ public class NameGen{
 
         if (names.isEmpty()) return null; // Если список пуст, возвращаем null
 
-        Random random = new Random();
+
         return names.get(random.nextInt(names.size())); // Генерируем случайное имя
     }
 }

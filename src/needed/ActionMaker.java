@@ -29,7 +29,7 @@ public class ActionMaker {
         }
     }
 
-    public static void staticStarter() throws WallIsAlreadyExistsException, WallHeightException, SomeoneInOrchestraIsSickException, SomeoneIsPlayingException, NotMovingArmsException, WrongArmPositionException, BecomeDeafException, WrongHeadAngleException, WrongHeadNodAngleException, MusicianIsTooWeakException {
+    public static void staticStarter() throws WallIsAlreadyExistsException, WallHeightException, SomeoneIsPlayingException, NotMovingArmsException, WrongArmPositionException, BecomeDeafException, WrongHeadAngleException, WrongHeadNodAngleException, MusicianIsTooWeakException {
         heroesGenerator.starter();
         Conductor conductor = new Conductor(InstrumentType.NOINSTRUMENT);
 
