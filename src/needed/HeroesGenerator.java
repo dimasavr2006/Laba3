@@ -10,7 +10,8 @@ public class HeroesGenerator {
     Frachnik[] frachniks;
     Korovyev korovyev;
 
-    public HeroesGenerator() {
+    public HeroesGenerator() throws WallIsAlreadyExistsException, WallHeightException {
+        starter();
     }
     public void starter() throws WallIsAlreadyExistsException, WallHeightException {
         this.margarita = new Margarita();

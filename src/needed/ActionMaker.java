@@ -15,7 +15,15 @@ public class ActionMaker {
 
     }
 
-    static HeroesGenerator heroesGenerator = new HeroesGenerator();
+    static HeroesGenerator heroesGenerator;
+
+    static {
+        try {
+            heroesGenerator = new HeroesGenerator();
+        } catch (WallIsAlreadyExistsException | WallHeightException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     static OrchestraAll orchestraAll;
 
