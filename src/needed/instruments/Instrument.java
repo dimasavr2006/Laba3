@@ -1,17 +1,21 @@
 package needed.instruments;
 
+import enums.InstrumentType;
 import needed.interfaces.ProduceSound;
 
-public abstract class Instrument implements ProduceSound {
+//public abstract class Instrument implements ProduceSound {
+public class Instrument implements ProduceSound {
 
     private double weight;
     private double efficiency;
+    private InstrumentType instrumentType;
 
     private String defaultSound;
 
-    public Instrument(double weight, double efficiency){
+    public Instrument(double weight, double efficiency, InstrumentType instrumentType){
         this.weight = weight;
         this.efficiency = efficiency;
+        this.instrumentType = instrumentType;
     }
 
     public void playMelody(){

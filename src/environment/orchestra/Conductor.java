@@ -59,12 +59,32 @@ public class Conductor extends Musician implements MakeToPlay{
     public void makeToPlay(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException, MusicianIsTooWeakException {
         checkIsPlayingAndTurnToAnotherCondition(localViolins.violinsAll, true, isNeededToMoveArms);
         checkIsPlayingAndTurnToAnotherCondition(localTrumpets.trumpetsAll, true, isNeededToMoveArms);
+        for (int i = 0; i < localTrumpets.trumpetsAll.length; i++){
+            for (int j = 0; j < localTrumpets.trumpetsAll[i].length; j++){
+                localTrumpets.trumpetsAll[i][j].takeInstrument(localTrumpets.trumpetsAll[i][j].instrumentType);
+            }
+        }
+        for (int i = 0; i < localViolins.violinsAll.length; i++){
+            for (int j = 0; j < localViolins.violinsAll[i].length; j++){
+                localViolins.violinsAll[i][j].takeInstrument(localViolins.violinsAll[i][j].instrumentType);
+            }
+        }
     }
 
     public void makeStopPlaying(boolean isNeededToMoveArms) throws SomeoneIsPlayingException, NotMovingArmsException, MusicianIsTooWeakException {
         checkIsPlayingAndTurnToAnotherCondition(localTrumpets.trumpetsAll, false, isNeededToMoveArms);
         checkIsPlayingAndTurnToAnotherCondition(localViolins.violinsAll, false, isNeededToMoveArms);
         stickFollowing();
+        for (int i = 0; i < localTrumpets.trumpetsAll.length; i++){
+            for (int j = 0; j < localTrumpets.trumpetsAll[i].length; j++){
+                localTrumpets.trumpetsAll[i][j].layInstrument(localTrumpets.trumpetsAll[i][j].instrumentType);
+            }
+        }
+        for (int i = 0; i < localViolins.violinsAll.length; i++){
+            for (int j = 0; j < localViolins.violinsAll[i].length; j++){
+                localViolins.violinsAll[i][j].layInstrument(localViolins.violinsAll[i][j].instrumentType);
+            }
+        }
     }
 
     public void stickFollowing(){

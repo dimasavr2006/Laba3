@@ -1,18 +1,19 @@
 package needed.instruments;
 
+import enums.InstrumentType;
 import needed.interfaces.ProduceSound;
 
-public class Trumpet implements ProduceSound {
-
-    private double weight;
-    private double efficiency;
+public class Trumpet extends Instrument implements ProduceSound{
 
     private String sound = "Ту-ту-ту-у-у-у";
 
+    private double weight;
+    private double efficiency;
+    private InstrumentType instrumentType;
+
     public Trumpet(double weight, double efficiency) {
 
-        this.weight = weight;
-        this.efficiency = efficiency;
+        super(weight, efficiency, InstrumentType.TRUMPET);
 
     }
 

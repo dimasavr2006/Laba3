@@ -4,8 +4,8 @@ import enums.*;
 import exceptions.*;
 import needed.*;
 import needed.instruments.Bow;
-import needed.instruments.Trumpet;
-import needed.instruments.Violin;
+import needed.instruments.HelpPart;
+import needed.instruments.Instrument;
 import needed.interfaces.PlayInstrument;
 import needed.utils.gens.*;
 
@@ -13,18 +13,28 @@ import java.util.Random;
 
 public class Musician extends Human implements PlayInstrument {
 
-    final InstrumentType instrumentType;
+    InstrumentType instrumentType;
     boolean isPlaying = false;
-    final boolean isHealthy;
+    boolean isHealthy;
 
     Random random = new Random();
 
-    Violin violin = new Violin(random.nextDouble(2, 4), random.nextDouble(80, 100));
-    Bow bow = new Bow();
-    Trumpet trumpet = new Trumpet(random.nextDouble(3, 5), random.nextDouble(80, 100));
+    Instrument instrument;
+    HelpPart helpPart; // DOP INSTRUMENT AS BOW FOR VIOLIN
 
     public Musician(InstrumentType instrumentType){
         super();
+
+        switch(instrumentType){
+            case TRUMPET -> {
+                instrument = new Instrument(random.nextDouble(3, 5), random.nextDouble(80, 100), instrumentType);
+
+            }
+            case VIOLIN ->{
+                instrument = new Instrument(random.nextDouble(2, 4), random.nextDouble(80, 100), instrumentType);
+                helpPart = new Bow();
+            }
+        }
 
         if (Math.random() < 0.5){
             setGender(Gender.FEMALE);
@@ -37,6 +47,8 @@ public class Musician extends Human implements PlayInstrument {
         this.isHealthy = !(Math.random() <= 0.001);
 
     }
+
+
 
     public void healthyChecker(Musician musician) throws SomeoneInOrchestraIsSickException {
 
@@ -61,15 +73,15 @@ public class Musician extends Human implements PlayInstrument {
         return instrumentType;
     }
 
-    public void takeInstrument(){
+    public void takeInstrument(InstrumentType instrumentType){
 
         switch (instrumentType){
             case VIOLIN -> {
 
                 lArm.setAngleOnBody(45);
                 rArm.setAngleOnBody(45);
-                lArm.putObjectInHand(violin);
-                rArm.putObjectInHand(bow);
+                lArm.putObjectInHand(instrument);
+                rArm.putObjectInHand(instrument);
                 lArm.setAngleOnBody(90);
                 rArm.setAngleOnBody(90);
                 lArm.setHandAngleOnArm(90);
@@ -79,8 +91,8 @@ public class Musician extends Human implements PlayInstrument {
 
                 lArm.setAngleOnBody(45);
                 rArm.setAngleOnBody(45);
-                lArm.putObjectInHand(trumpet);
-                rArm.putObjectInHand(trumpet);
+                lArm.putObjectInHand(instrument);
+                rArm.putObjectInHand(instrument);
                 lArm.setAngleOnBody(90);
                 rArm.setAngleOnBody(lArm.getAngleOnBody());
                 lArm.setHandAngleOnArm(90);
@@ -90,7 +102,7 @@ public class Musician extends Human implements PlayInstrument {
 
     }
 
-    public void layInstrument(){
+    public void layInstrument(InstrumentType instrumentType){
         switch (instrumentType){
             case VIOLIN -> {
 
@@ -98,8 +110,8 @@ public class Musician extends Human implements PlayInstrument {
                 lArm.setHandAngleOnArm(0);
                 rArm.setAngleOnBody(45);
                 lArm.setAngleOnBody(45);
-                rArm.inHand.remove(bow);
-                lArm.inHand.remove(violin);
+                rArm.inHand.remove(helpPart);
+                lArm.inHand.remove(instrument);
                 rArm.setAngleOnBody(0);
                 lArm.setAngleOnBody(0);
 
@@ -111,8 +123,8 @@ public class Musician extends Human implements PlayInstrument {
                 lArm.setHandAngleOnArm(rArm.getHandAngleOnArm());
                 rArm.setAngleOnBody(45);
                 lArm.setAngleOnBody(rArm.getAngleOnBody());
-                rArm.inHand.remove(trumpet);
-                lArm.inHand.remove(trumpet);
+                rArm.inHand.remove(instrument);
+                lArm.inHand.remove(instrument);
                 rArm.setAngleOnBody(0);
                 lArm.setAngleOnBody(rArm.getAngleOnBody());
             }

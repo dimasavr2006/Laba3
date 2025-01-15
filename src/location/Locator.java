@@ -9,7 +9,7 @@ public class Locator {
     final Random random = new Random();
 
     public Locator() {
-
+        mainGeneratorOfPlace();
     }
 
     //VARIABLES OF PLACES
@@ -62,7 +62,7 @@ public class Locator {
 
 
 
-    public void mainGeneratorOfPlace() {
+    private void mainGeneratorOfPlace() {
 
         roomXCoordinate = random.nextDouble(90, 180);
         roomYCoordinate = random.nextDouble(160, 320);

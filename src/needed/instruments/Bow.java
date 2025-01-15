@@ -2,7 +2,7 @@ package needed.instruments;
 
 import java.util.Random;
 
-public class Bow {
+public class Bow extends HelpPart{
 
     Random random = new Random();
 

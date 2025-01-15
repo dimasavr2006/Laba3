@@ -1,6 +1,6 @@
 package environment.fakeEnvironment;
 
-import exceptions.TreeDestroyingException;
+import exceptions.*;
 import location.Locator;
 import needed.ActionMaker;
 import needed.Human;
@@ -8,7 +8,7 @@ import needed.Human;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TropicalGarden {
+public class TropicalGarden{
 
     final Random random = new Random();
 

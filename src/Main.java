@@ -25,6 +25,7 @@ public static void main(String[] args) throws WrongArmPositionException, WrongHe
 
     небольшой огрех: инструмент появляется вместе с музыкантом, но берёт он его не сразу
 
+    профиль музыканта постоянен (чтобы не было лишних полей)
     */
 
     }
